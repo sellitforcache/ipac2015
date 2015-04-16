@@ -55,14 +55,13 @@
 
 \section{Introduction}
 
-SINQ spallation
-reflection
+EIGER is a triple-axis thermal neutron spectrometer that looks at the light water scatterer in SINQ.  SINQ itself is a spallation neutron source driven by a continuous 600 MeV proton beam at the Paul Scherrer Institut in Villigen, Switzerland.  The incoming protons impinge on a lead target cooled with heavy water, producing high energy neutrons via spallation.  These neutrons are moderated by the tank of D$_2$O surrounding the target.  The water scatterer is a set of seven vertical aluminum tubes that contain ambient temperature water, and acts as a scattering medium to send thermal neutrons streaming through evacuated nozzles towards neutron instruments.  The neutron guide that extracts thermal neutrons from the water scatterer towards the EIGER instrument is rectangular, tapers from 80 mm wide near the moderator tank to 30 mm wide at the guide exit in the horizontal plane, and is a constant 150 mm tall in the vertical plane.  There is a 10 cm thick sapphire crystal near the moderator tank to preferentially scatter neutrons above xxx eV out of the beam.  The guide is also covered in neutron ``supermirrors'' internally.  These mirrors are reflective to low-eneergy neutrons, and help increase neutron extraction efficienyl by allowing the guide to transport neutrons with divergence instead of only neutrons with trajectories parallel to the guide axis.  The mirrors obey the reflectivitly law shown in Eq. \ref{eq:ref} where xx is x, x is x, and x is x.
 
-\begin{equation}\label{eq:units}
+\begin{equation}\label{eq:ref}
     C_B=\frac{q^3}{3\epsilon_{0} mc}=\SI{3.54}{\micro eV/T}
 \end{equation}
 
-eiger reflectivity parameters
+The reflectivity parameters of EIGER's supermirrors have been measured previously and determined to be xxx,xxx,xxx,xxx \cite{eiger-uwe}.  This reflectivity model is has been implmented in patched version of MCNPX 2.5.0 previously \cite{mcnpx-ref}, but has recently been ported to MCNPX 2.7.0.  MPI parallelism has been introuced to enable this work.  The complete reflectivity capabilities now allow the neutron flux gains from the guide reflectivity to be completely modelled in MCNPX 2.7.0.  This work demonstates this capability by comparing the calculated activation of an array of gold foils exposed to the EIGER beam to experimental results.
 
 
 \section{Measurement}
