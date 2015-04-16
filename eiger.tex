@@ -67,20 +67,59 @@ eiger reflectivity parameters
 
 \section{Measurement}
 
+\begin{figure}[!htb]
+   \centering
+   \includegraphics*[width=45mm]{graphics/foils.eps}
+   \caption{Gold foil array used in the measurements.  Foils are 25 mm in diameter and 30 mm center-to-center.  Blue dashed lines show the approximate extent of the neutron guide.}
+   \label{foils}
+\end{figure}
+
 gold foils
 current
 activation
 
 \section{MCNPX 2.7.0 Simulation}
 
+\begin{figure}[!htb]
+   \centering
+   \includegraphics*[width=65mm]{graphics/geom.pdf}
+   \caption{MCNPX geometry highlighting the important elements of the neutorn path to the measurement point.}
+   \label{geom}
+\end{figure}
+
+\begin{figure}[!htb]
+   \centering
+   \includegraphics*[trim = 0mm 170mm 0mm 0mm, width=85mm]{graphics/ws.pdf}
+   \caption{MCNPX weight window map near the water scatterer.}
+   \label{wsmap}
+\end{figure}
+
 ww, dxtran
 plot of geometry, wwg
+ws and sapphire
 reflective surfaces
 
 
 \section{Results}
 
-plots
+activity formula?
+
+%trim option's parameter order: left bottom right top
+\begin{figure}[!htb]
+   \centering
+   \includegraphics*[trim = 10mm 0mm 15mm 0mm, width=80mm]{graphics/gain.pdf}
+   \caption{MCNPX weight window map near the water scatterer.}
+   \label{gain}
+\end{figure}
+
+\begin{figure}[!htb]
+   \centering
+   \includegraphics*[trim = 0mm 0mm 15mm 0mm, width=80mm]{graphics/GF_act.pdf}
+   \caption{MCNPX weight window map near the water scatterer.}
+   \label{activation}
+\end{figure}
+
+gain goes above 1 at about 200 meV
 
 
 \section{Conclusion}
@@ -101,7 +140,11 @@ Work supported by Swiss National Fund
 	F. X. Gallmeier, M. Wohlmuther, U. Filges, D. Kiselev, G. Muhrer,
 	``Implementation of Neutron Mirror Modeling Capability into MCNPX and Its Demonstration in First Applications'',
   Nuclear Technology Vol. 168 No. 3, December 2009, ppg 768-772.
-	\url{http://www.ans.org/pubs/journals/nt/a_9304}
+
+\bibitem{eiger-uwe}
+  U. Filges, S. N. Gvasaliya, H.M. Ronnow, J. Birk,
+  ``Monte Carlo Simulations for the new EIGER spectrometer at PSI'',
+  4th European Conference on Neutron Scattering, 25-29 June, 2007, Lund, Sweden.
 
 \end{thebibliography}
 
