@@ -64,40 +64,55 @@ EIGER is a triple-axis thermal neutron spectrometer that looks at the light wate
 The reflectivity parameters of EIGER's supermirrors have been measured previously and determined to be xxx,xxx,xxx,xxx \cite{eiger-uwe}.  This reflectivity model is has been implmented in patched version of MCNPX 2.5.0 previously \cite{mcnpx-ref}, but has recently been ported to MCNPX 2.7.0.  MPI parallelism has been introuced to enable this work.  The complete reflectivity capabilities now allow the neutron flux gains from the guide reflectivity to be completely modelled in MCNPX 2.7.0.  This work demonstates this capability by comparing the calculated activation of an array of gold foils exposed to the EIGER beam to experimental results.
 
 
-\section{Measurement}
+\section{Gold Foil Measurement}
+
+A vertical array of 6 gold foils were exposed to the EIGER beam in December, 2013.  The foils were placed near the monochromator position at EIGER, near the center of its sheidling.  The array of foils is shown in Figure \ref{foils}.  
 
 \begin{figure}[!htb]
    \centering
    \includegraphics*[width=45mm]{graphics/foils.eps}
-   \caption{Gold foil array used in the measurements.  Foils are 25 mm in diameter and 30 mm center-to-center.  Blue dashed lines show the approximate extent of the neutron guide.}
+   \caption{Gold foil array used in the measurements.  Foils are 25 mm in diameter and 30 mm center-to-center.  Blue marker lines show the approximate extent of the neutron guide.}
    \label{foils}
 \end{figure}
 
-gold foils
-current
-activation
+The average current on the SINQ target during the irradiaiton was $200 \mu A$, and the foils were exposed for 5 minutes.  The foils were allowed to decay for four days, then their activity was measured and back-corrected to midnight of that morning.
+
 
 \section{MCNPX 2.7.0 Simulation}
+
+The detailed MCNPX model geometry is shown in Figure \ref{geom}.  It includes the lead target, the moderator tank, the water scatterer, the sapphire crystal, the neutron guide, and the shielding around the EIGER monochromater position.
 
 \begin{figure}[!htb]
    \centering
    \includegraphics*[width=65mm]{graphics/geom.pdf}
-   \caption{MCNPX geometry highlighting the important elements of the neutorn path to the measurement point.}
+   \caption{MCNPX geometry highlighting the important elements of the neutron path to the measurement point.}
    \label{geom}
 \end{figure}
 
+The total fraction of neutrons that make it to EIGER from the target is small, and the low absobtion means neutrons undergo many thousands of interactions before they are lost, on average.  This required that multiple varience reduction teqniques be used in MCNPX in order to obtain results in a managable time with limited computational resources.  The first technique was using mesh-based neutron weight windows.  The mesh is spherical, centered around the water scatterer, and has fine divisions in the direction of the target and at small radii.  The values were optimized based on the response of a point detector tally at the measurement position.  %Figure \ref{wsmap} shows the resulting weight window map in the region near the water scatterer.
+
+%\begin{figure}[!htb]
+%   \centering
+%   \includegraphics*[trim = 0mm 170mm 0mm 0mm, width=85mm]{graphics/ws.pdf}
+%   \caption{MCNPX weight window map near the water scatterer.}
+%   \label{wsmap}
+%\end{figure}
+
+Point detectors are not able to capture the reflectivity effects since they estimate non-interaction along a straight line.  Becasue of this, thye could not be used, and neutrons had to be propagated down the the guide.  To do this, a DXTRAN sphere was placed around the sapphire crystal before the guide section.  This forces a fraction of the neutron wieght to be placed at the sphere radius at every scattering interaction.  After placement, they are transported as normal neutrons.  A surface source was then written from the downstream surface of the sapphire crystal.  This distribution was used as the source term in a set of subseuqent calculations with the neutron guide reflectivity turned on on off.  The sufaces source was sampled repeatedly with different initial random number seeds in order to capture the full variance of the sapphire surface source at the measurement point.  The spatial distributions of the thermal neutron current within a 5$^\circ$ cone normal to the water scatterer and the sapphire crystal are shown in Figures \ref{wsdist} and \ref{sappdist}, respectively.
+
+
 \begin{figure}[!htb]
    \centering
-   \includegraphics*[trim = 0mm 170mm 0mm 0mm, width=85mm]{graphics/ws.pdf}
-   \caption{MCNPX weight window map near the water scatterer.}
-   \label{wsmap}
+   \includegraphics*[trim = 0mm 0mm 0mm 0mm, width=85mm]{graphics/wsdist.pdf}
+   \caption{}
+   \label{wsdist}
 \end{figure}
-
-ww, dxtran
-plot of geometry, wwg
-ws and sapphire
-reflective surfaces
-
+\begin{figure}[!htb]
+   \centering
+   \includegraphics*[trim = 0mm 0mm 0mm 0mm, width=85mm]{graphics/sappdist.pdf}
+   \caption{}
+   \label{sappdist}
+\end{figure}
 
 \section{Results}
 
