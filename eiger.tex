@@ -103,42 +103,45 @@ Point detectors are not able to capture the reflectivity effects since they esti
 
 \begin{figure}[!htb]
    \centering
-   \includegraphics*[trim = 0mm 0mm 0mm 0mm, width=85mm]{graphics/wsdist.pdf}
-   \caption{}
+   \includegraphics*[trim = 0mm 0mm 0mm 0mm, width=65mm]{graphics/wsdist.pdf}
+   \caption{The neutron current distribution of the water scatterer in a 5 degree cone normal to its EIGER-facing surface.}
    \label{wsdist}
 \end{figure}
+
 \begin{figure}[!htb]
    \centering
-   \includegraphics*[trim = 0mm 0mm 0mm 0mm, width=85mm]{graphics/sappdist.pdf}
-   \caption{}
+   \includegraphics*[trim = 0mm 0mm 0mm 0mm, width=65mm]{graphics/sappdist.pdf}
+   \caption{The neutron current distribution in a 5 degree cone normal to the downstream surface of the sapphire crystal filter.}
    \label{sappdist}
 \end{figure}
 
-\section{Results}
+\section{Activation Results}
 
-activity formula?
+The neutron energy spectrum at the measurement point was binned into 128 equi-log spaced bins for cases with the guide reflectivity turn on and off.  The spectra and gain factors from these calculations are shown in Figure \ref{gain}.  The reflectivity gain goes above 1 at about 200 meV, and increases to about 2 at 4 meV.  Below 4 meV, the statistics of the simulation start to become unreliable.
 
 %trim option's parameter order: left bottom right top
 \begin{figure}[!htb]
    \centering
    \includegraphics*[trim = 10mm 0mm 15mm 0mm, width=80mm]{graphics/gain.pdf}
-   \caption{MCNPX weight window map near the water scatterer.}
+   \caption{The average spectra at the gold foil irradiation position with the guide reflectivity turned on and off in MCNPX 2.7.0.}
    \label{gain}
 \end{figure}
+
+The gold (n,$\gamma$) macroscopic cross section was then averaged to the same binning, multiplied by the spectra, and summed (since the calculated sepctrum isn't differential) to calculate the total reaction rate in the gold foils per inicident proton on the SINQ target.  This was done for each gold foil position.  The aforementioned experimental irradiation and cooling parameters were then used to calculate the specific activity in the foils.  The results are shown in Figure \ref{activation}.
 
 \begin{figure}[!htb]
    \centering
    \includegraphics*[trim = 0mm 0mm 15mm 0mm, width=80mm]{graphics/GF_act.pdf}
-   \caption{MCNPX weight window map near the water scatterer.}
+   \caption{Top: The measure activation of the gold foils and the calculated activation with reflectivity on and off.  Middle:  The gain factors over the calculated activation with reflectivityoff.  Bottom:  The relative difference in gain between the measured values and the ideal reflectivity case.}
    \label{activation}
 \end{figure}
 
-gain goes above 1 at about 200 meV
+It can be seen that the calcualted values bracket the measured values, and that the highest gain facto is in the vertical center of the guide opening.
 
 
 \section{Conclusion}
 
-30\% of ideal
+indicating that the EIGER supermirrors are not operating at full capacity.  The lower plot in Figure \ref{activation} shows the relative difference of the ideal and measured gain factors.  The flux is about 50\% of the ideal value at the vertical center of the guide, and about equal to the non-relfective case at the top and bottom of the guide.  The average value is XXX.
 
 
 \section{acknowledgment}
