@@ -72,7 +72,7 @@ R(Q) =
 
 The reflectivity parameters of EIGER's supermirrors have been measured previously and determined to be $R_0=0.995$, $Q_c=2.17\times10^{-2}\AA^{-1}$, $m=3.6$, $\alpha=3.99 \AA$, and $W=10^{-3} \AA^{-1}$ \cite{eiger-uwe}.  The guide is rectangular, tapers in the horizontal plane from 80 mm wide near the moderator tank to 30 mm wide at the guide exit, and is a constant 150 mm tall in the vertical plane.  There is a 10 cm thick sapphire crystal near the moderator tank to preferentially scatter neutrons above 0.5 eV out of the beam.
 
-This reflectivity model is used by McStas and has been previously implemented in patched version of MCNPX 2.5.0 \cite{mcnpx-ref}.  The patch has recently been ported to MCNPX 2.7.0 and debugged for MPI parallelism.  The parallelized reflectivity capabilities now allow the neutron flux gains to be completely modeled in MCNPX 2.7.0.  This capability is demonstrated by comparing the calculated activation of an array of gold foils exposed to the EIGER beam to experimental results.
+This reflectivity model is used by McStas and has been previously implemented in patched version of MCNPX 2.5.0 \cite{mcnpx-ref}.  The patch has recently been ported to MCNPX 2.7.0 and debugged for MPI parallelism \cite{mcnpx270}.  The parallelized reflectivity capabilities now allow the neutron flux gains to be completely modeled in MCNPX 2.7.0.  This capability is demonstrated by comparing the calculated activation of an array of gold foils exposed to the EIGER beam to experimental results.
 
 \section{Gold Foil Measurement}
 
@@ -90,7 +90,8 @@ The foils were placed near the monochromator position at EIGER, near the center 
 
 \section{MCNPX 2.7.0 Simulation}
 
-The MCNP model geometry is shown in Figure \ref{geom}.  The major components are the lead target, the moderator tank, the water scatterer, the in-tank nozzles, the sapphire crystal, the neutron guide, and the shielding around SINQ and EIGER.
+The MCNPX model geometry is shown in Figure \ref{geom}.  The major components are the lead target, the moderator tank, the water scatterer, the in-tank nozzles, the sapphire crystal, the neutron guide, and the shielding around SINQ and EIGER.  The MCNPX simulation used the relevant S($\alpha$,$\beta$) data, including those for the crystal sapphire \cite{sapp}.  The MCNPX model for the water scatterer were created from the CAD models using the MCAM interface code developed by the FDS Team, China \cite{mcam}.
+
 
 \begin{figure}[!htb]
    \centering
@@ -99,7 +100,10 @@ The MCNP model geometry is shown in Figure \ref{geom}.  The major components are
    \label{geom}
 \end{figure}
 
-The total fraction of neutrons that make it to EIGER from the target is small ($\sim 2 \times 10^{-6}$ per proton), and the low absorption means neutrons undergo many thousands of interactions before they are lost, on average.  This required that multiple variance reduction techniques be used in MCNPX in order to obtain results in a manageable time with limited computational resources.  The first technique used was mesh-based neutron weight windows.  The mesh is spherical, centered around the water scatterer, and has fine divisions at small radii and in the direction of the target.  The values were optimized based on the response of a point detector tally at the measurement position.  %Figure \ref{wsmap} shows the resulting weight window map in the region near the water scatterer.
+The total fraction of neutrons that make it to EIGER from the target is small ($\sim 2 \times 10^{-6}$ per proton), and the low absorption means neutrons undergo many thousands of interactions before they are lost, on average.  This required that multiple variance reduction techniques be used in MCNPX in order to obtain results in a manageable time with limited computational resources.  The first technique used was mesh-based neutron weight windows.  The mesh is spherical, centered around the water scatterer, and has fine divisions at small radii and in the direction of the target.  The values were optimized based on the response of a point detector tally at the measurement position.  
+
+
+%Figure \ref{wsmap} shows the resulting weight window map in the region near the water scatterer.
 
 %\begin{figure}[!htb]
 %   \centering
@@ -124,7 +128,7 @@ Point detectors are not able to capture the reflectivity effects since they esti
    \label{sappdist}
 \end{figure}
 
-The post-sapphire distribution was used as the source term in a set of subsequent calculations with the neutron guide reflectivity turned on and off.  The surface source was sampled repeatedly with different initial random number seeds in order to capture the full weight variance of the sapphire surface source at the measurement point.
+The post-sapphire distribution was used as the source term in a set of subsequent calculations with the neutron guide reflectivity turned on and off.  The surface source was sampled repeatedly with different initial random number seeds in order to capture the full weight variance of the sapphire surface source at the measurement point.  Much effort was made to keep the simulatiuons as high-fidelity as possible; no spectral or spatial approximations were made with regard to the neutron population, and no geometrical simplificaitons were knowingly made.
 
 \section{Activation Results}
 
@@ -158,18 +162,40 @@ The caluclated results confirm that reflective neutron guides can now be complet
 
 This work was supported by Swiss National Fund.
 
-%\begin{thebibliography}{9}   % Use for  1-9  references
-\begin{thebibliography}{99} % Use for 10-99 references
+\begin{thebibliography}{9}   % Use for  1-9  references
+%\begin{thebibliography}{99} % Use for 10-99 references
 
 \bibitem{mcnpx-ref}
   F. X. Gallmeier, M. Wohlmuther, U. Filges, D. Kiselev, G. Muhrer,
   ``Implementation of Neutron Mirror Modeling Capability into MCNPX and Its Demonstration in First Applications'',
-  Nuclear Technology Vol. 168 No. 3, December 2009, ppg 768-772. 
+  Nuclear Technology Vol. 168 No. 3, December 2009, pp 768-772. 
 
 \bibitem{eiger-uwe}
   U. Filges, S. N. Gvasaliya, H.M. Ronnow, J. Birk,
   ``Monte Carlo Simulations for the new EIGER spectrometer at PSI'',
-  4th European Conference on Neutron Scattering, 25-29 June, 2007, Lund, Sweden. \\
+  4th European Conference on Neutron Scattering, 25-29 June, 2007, Lund, Sweden. 
+
+\bibitem{mcnpx270}
+   D.B. Pelowitz,
+   ``MCNPX Manual, Version 2.7.0'',
+   La-Cp-11-00438, April, 2011.
+
+\bibitem{sapp}
+  F. Cantargi, J.R. Granada, R.E. Mayer, 
+  ``Thermal neutron scattering kernels for sapphire and silicon single crystals'', 
+  Annals of Nuclear Energy 80, 2015, pp 43–46.  
+
+\bibitem{mcam}
+  Y. Wu, FDS Team, 
+  ``CAD-based interface programs for fusion neutron transport simulation'', 
+  Fusion Engineering and Design 84, 2009, 1987–1992.
+
+
+
+
+
+
+
 
 \end{thebibliography}
 
