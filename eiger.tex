@@ -55,7 +55,7 @@
 
 \section{Introduction}
 
-EIGER is a triple-axis thermal neutron spectrometer that looks at the light water scatterer inside SINQ, a spallation neutron source driven by a continuous 590 MeV proton beam at the Paul Scherrer Institut in Villigen, Switzerland.  The incoming protons impinge on a lead target cooled with heavy water, producing high energy neutrons via spallation.  These neutrons are moderated by the tank of D$_2$O surrounding the target.  The water scatterer is a set of seven vertical aluminum tubes that contain ambient temperature water, and acts as a scattering medium to send thermal neutrons streaming through evacuated nozzles towards neutron instruments.  
+EIGER is a triple-axis thermal neutron spectrometer that looks at the light water scatterer inside SINQ, a spallation neutron source driven by a continuous 590 MeV proton beam at the Paul Scherrer Institut in Villigen, Switzerland.  The incoming protons impinge on a lead target cooled with heavy water, producing high energy neutrons.  These neutrons are moderated by the tank of D$_2$O surrounding the target.  The ``water scatterer'' is a set of seven vertical aluminum tubes 25 cm away from the center of the target that contain ambient temperature water. It acts as a scattering medium to send thermal neutrons streaming through evacuated nozzles towards neutron instruments.  
 
 The neutron guide that extracts thermal neutrons from the water scatterer towards the EIGER instrument is covered in neutron ``supermirrors'' internally.  These mirrors are reflective to low-energy neutrons, and allow the guide to transport neutrons with small divergence instead of only neutrons with trajectories parallel to the guide axis, increasing neutron extraction efficiency.  The reflectivity of the mirrors are described by Eq. \ref{eq:ref} where $R_0$ is nominal reflectivity, $Q_c$ is the critical momentum transfer, $m$ is the extension parameter, $\alpha$ is reflectivity declination parameter, and $W$ is is the reflectivity edge width \cite{mcnpx-ref}.
 
@@ -70,14 +70,13 @@ R(Q) =
 \end{cases}
 \end{equation}
 
-The reflectivity parameters of EIGER's supermirrors have been measured previously and determined to be $R_0=0.995$, $Q_c=2.17\times10^{-2}\AA^{-1}$, $m=3.6$, $\alpha=3.99 \AA$, and $W=10^{-3} \AA^{-1}$ \cite{eiger-uwe}.  The guide is rectangular, tapers from 80 mm wide near the moderator tank to 30 mm wide at the guide exit in the horizontal plane, and is a constant 150 mm tall in the vertical plane.  There is a 10 cm thick sapphire crystal near the moderator tank to preferentially scatter neutrons above 0.5 eV out of the beam.
+The reflectivity parameters of EIGER's supermirrors have been measured previously and determined to be $R_0=0.995$, $Q_c=2.17\times10^{-2}\AA^{-1}$, $m=3.6$, $\alpha=3.99 \AA$, and $W=10^{-3} \AA^{-1}$ \cite{eiger-uwe}.  The guide is rectangular, tapers in the horizontal plane from 80 mm wide near the moderator tank to 30 mm wide at the guide exit, and is a constant 150 mm tall in the vertical plane.  There is a 10 cm thick sapphire crystal near the moderator tank to preferentially scatter neutrons above 0.5 eV out of the beam.
 
-This reflectivity model is used by McStas and has been implemented in patched version of MCNPX 2.5.0 previously \cite{mcnpx-ref}, but has recently been ported to MCNPX 2.7.0.  MPI parallelism has been introduced to enable this work.  The complete reflectivity capabilities now allow the neutron flux gains from the guide reflectivity to be completely modeled in MCNPX 2.7.0.  This work demonstrates this capability by comparing the calculated activation of an array of gold foils exposed to the EIGER beam to experimental results.
-
+This reflectivity model is used by McStas and has been previously implemented in patched version of MCNPX 2.5.0 \cite{mcnpx-ref}.  The patch has recently been ported to MCNPX 2.7.0 and debugged for MPI parallelism.  The parallelized reflectivity capabilities now allow the neutron flux gains to be completely modeled in MCNPX 2.7.0.  This capability is demonstrated by comparing the calculated activation of an array of gold foils exposed to the EIGER beam to experimental results.
 
 \section{Gold Foil Measurement}
 
-The vertical array of six gold foils shown in Figure \ref{foils} were exposed to the EIGER beam in December, 2013.   
+The vertical array of six gold foils shown in Figure \ref{foils} were exposed to the EIGER beam on December, 2013.   
 
 \begin{figure}[!htb]
    \centering
