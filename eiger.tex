@@ -100,19 +100,9 @@ The MCNPX model geometry is shown in Figure \ref{geom}.  The major components ar
    \label{geom}
 \end{figure}
 
-The total fraction of neutrons that make it to EIGER from the target is small ($\sim 2 \times 10^{-6}$ per proton), and the low absorption means neutrons undergo many thousands of interactions before they are lost, on average.  This required that multiple variance reduction techniques be used in MCNPX in order to obtain results in a manageable time with limited computational resources.  The first technique used was mesh-based neutron weight windows.  The mesh is spherical, centered around the water scatterer, and has fine divisions at small radii and in the direction of the target.  The values were optimized based on the response of a point detector tally at the measurement position.  
+The total fraction of neutrons that make it to EIGER from the target is small ($\sim 2 \times 10^{-6}$ per proton), and the low absorption means neutrons undergo many thousands of interactions before they are lost, on average.  This required that multiple variance reduction techniques be used in MCNPX.  The first technique used was mesh-based neutron weight windows.  A spherical mesh centered around the water scatterer with fine divisions at small radii and in the direction of the target was used.  The values of the mesh were optimized based on the response of a point detector tally at the measurement position.  Point detectors are not able to capture the reflectivity effects since they estimate non-interaction along a straight line.  Therefore, neutrons had to be propagated down the guide using a DXTRAN sphere.  The sphere was placed around the sapphire crystal before the guide section to force a fraction of the neutron weight to be placed at the sphere radius.  A surface source was then written from the downstream surface of the sapphire crystal.  The calculated spatial distributions of the thermal neutron current within a 5$^\circ$ cone normal to the water scatterer and the sapphire crystal are shown in Figures \ref{wsdist} and \ref{sappdist}, respectively.  The SINQ target is on the left side in both figures.
 
 
-%Figure \ref{wsmap} shows the resulting weight window map in the region near the water scatterer.
-
-%\begin{figure}[!htb]
-%   \centering
-%   \includegraphics*[trim = 0mm 170mm 0mm 0mm, width=85mm]{graphics/ws.pdf}
-%   \caption{MCNPX weight window map near the water scatterer.}
-%   \label{wsmap}
-%\end{figure}
-
-Point detectors are not able to capture the reflectivity effects since they estimate non-interaction along a straight line.  Because of this, point detectors could not be used to capture the reflectivity effects, and neutrons had to be propagated down the guide.  To do this, a DXTRAN sphere was placed around the sapphire crystal before the guide section.  DXTRAN spheres force a fraction of the neutron weight to be placed at the sphere radius at every scattering interaction where they are transported as normal neutrons afterwards.  A surface source was then written from the downstream surface of the sapphire crystal.  The calculated spatial distributions of the thermal neutron current within a 5$^\circ$ cone normal to the water scatterer and the sapphire crystal are shown in Figures \ref{wsdist} and \ref{sappdist}, respectively.  The SINQ target is on the left side in both figures.
 
 \begin{figure}[!htb]
    \centering
@@ -132,7 +122,7 @@ The post-sapphire distribution was used as the source term in a set of subsequen
 
 \section{Activation Results}
 
-The neutron energy spectrum at the measurement point was calculated with 128 equi-log bins from $10^{-12}$ to 600 MeV for cases with the guide reflectivity turn on and off.  The spectra and reflectivity gain factors from these teo sets of calculations are shown in Figure \ref{gain}.  
+The neutron energy spectrum at the measurement point was calculated with 128 equi-log bins from $10^{-12}$ to 600 MeV for cases with the guide reflectivity turn on and off.  The spectra and reflectivity gain factors from these two sets of calculations are shown in Figure \ref{gain}.  
 
 %trim option's parameter order: left bottom right top
 \begin{figure}[!htb]
