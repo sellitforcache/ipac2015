@@ -41,7 +41,7 @@
 
 \begin{document}
 
-\title{Verification of the Neutron Mirror Capabilities in MCNPX via Gold Foil Measurements at the EIGER Instrument Beamline at the Swiss Spallation Neutron Source (SINQ)}
+\title{Verification of the Neutron Mirror Capabilities in MCNPX via Gold Foil Measurements at the EIGER Instrument Beamline at the Swiss Spallation Neutron Source (SINQ) \thanks{Supported by Swiss National Science Foundation grant 200021\_150048/1} }
 
 \author{R.M. Bergmann \thanks{ryan.bergmann@psi.ch}, U. Filges, S. Forss, D. Reggiani, E. Rantsiou, T. Reiss, \\ U. Stuhr, V. Talanov, M. Wohlmuther \\ Paul Scherrer Institut, Villigen, Switzerland}
 
@@ -59,7 +59,7 @@ EIGER is a triple-axis thermal neutron spectrometer that looks at the light wate
 
 The neutron guide that extracts thermal neutrons from the water scatterer towards the EIGER instrument is covered in neutron ``supermirrors'' internally.  These mirrors are reflective to low-energy neutrons, and allow the guide to transport neutrons with small divergence instead of only neutrons with trajectories parallel to the guide axis, increasing neutron extraction efficiency.  The reflectivity of the mirrors are described by Eq. \ref{eq:ref} where $R_0$ is nominal reflectivity, $Q_c$ is the critical momentum transfer, $m$ is the angular extension parameter, $\alpha$ is reflectivity declination parameter, and $W$ is the reflectivity edge width \cite{mcnpx-ref}.
 
-The reflectivity parameters of EIGER's supermirrors have been measured previously and determined to be $R_0=0.995$, $Q_c=2.17\times10^{-2}\AA^{-1}$, $m=3.6$, $\alpha=3.99 \AA$, and $W=10^{-3} \AA^{-1}$ \cite{eiger-uwe}.  The guide is rectangular, tapers in the horizontal plane from 80 mm wide near the moderator tank to 30 mm wide at the guide exit, and is a constant 150 mm tall in the vertical plane.  There is a 10 cm thick sapphire crystal near the moderator tank to preferentially scatter neutrons above 0.5 eV out of the beam.
+The reflectivity parameters of EIGER's supermirrors have been measured previously and determined to be $R_0=0.995$, $Q_c=2.17\times10^{-2}\AA^{-1}$, $m=3.6$, $\alpha=3.99 \AA$, and $W=10^{-3} \AA^{-1}$ \cite{eiger-uwe}.  The guide is rectangular, tapers in the horizontal plane from 80 mm wide near the moderator tank to 30 mm wide at the guide exit, and is a constant 150 mm tall in the vertical plane.  There is a 10 cm thick sapphire crystal near the moderator tank to preferentially scatter neutrons above 0.1 eV out of the beam.
 
 \begin{equation}\label{eq:ref}
 R(Q) = 
@@ -140,7 +140,7 @@ The reflectivity gain goes above unity below 200 meV and increases to 2.5 at 3 m
    \label{activation}
 \end{figure}
 
-It can be seen that the calculated activity values bracket the measured values, and that the highest gain factor is in the vertical center of the guide opening.  The lower plot in Figure \ref{activation} shows the relative difference of the ideal and measured gain factors.  The flux is about 50\% of the ideal value at the vertical center of the guide, and about equal to the non-reflective case at the top and bottom of the guide.  The average value is 20\% if the -7.5 cm value is not considered.
+It can be seen that the calculated activity values bracket the measured values, and that the highest gain factor is in the vertical center of the guide opening.  The lower plot in Figure \ref{activation} shows the relative difference of the ideal and measured gain factors.  The flux is less than 50\% of the ideal value at the vertical center of the guide, and about equal to the non-reflective case at the top and bottom of the guide.  The average value is 20\% if the -7.5 cm value is not considered.
 
 
 \section{Conclusion}
@@ -149,7 +149,7 @@ The caluclated results confirm that reflective neutron guides can now be complet
 
 \section{acknowledgment}
 
-This work was supported by the Swiss National Science Foundation grant [].
+This work was supported by Swiss National Science Foundation grant 200021\_150048/1.
 
 \begin{thebibliography}{9}   % Use for  1-9  references
 %\begin{thebibliography}{99} % Use for 10-99 references
