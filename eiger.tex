@@ -76,7 +76,7 @@ This reflectivity model is used by McStas and has been previously implemented in
 
 \section{Gold Foil Measurement}
 
-The vertical array of six gold foils shown in Figure \ref{foils} were exposed to the EIGER beam on December, 2013.   
+The vertical array of six gold foils shown in Figure \ref{foils} were exposed to the EIGER beam in December, 2013.   
 
 \begin{figure}[!htb]
    \centering
@@ -90,7 +90,7 @@ The foils were placed near the monochromator position at EIGER, near the center 
 
 \section{MCNPX 2.7.0 Simulation}
 
-The MCNPX model geometry is shown in Figure \ref{geom}.  The major components are the lead target, the moderator tank, the water scatterer, the in-tank nozzles, the sapphire crystal, the neutron guide, and the shielding around SINQ and EIGER.  The MCNPX simulation used the relevant S($\alpha$,$\beta$) data, including those for the crystal sapphire \cite{sapp}.  The MCNPX model for the water scatterer was created from the CAD models using the MCAM interface code developed by the FDS Team, China \cite{mcam}.
+The MCNPX model geometry is shown in Figure \ref{geom}.  The major components are the lead target, the moderator tank, the water scatterer, the in-tank nozzles, the sapphire crystal, the neutron guide, and the shielding around SINQ and EIGER.  The MCNPX simulation used the relevant S($\alpha$,$\beta$) data, including those for the crystal sapphire \cite{sapp}.  The MCNPX model for the water scatterer was created from CAD models using the MCAM interface code developed by the FDS Team, China \cite{mcam}.
 
 
 \begin{figure}[!htb]
@@ -100,7 +100,7 @@ The MCNPX model geometry is shown in Figure \ref{geom}.  The major components ar
    \label{geom}
 \end{figure}
 
-The total fraction of neutrons that make it to EIGER is small ($\sim 10^{-6}$ per proton), and the low absorption means neutrons undergo many thousands of interactions before they are lost, on average.  This required the use of multiple variance reduction techniques in MCNPX.  The first technique used was mesh-based neutron weight windows.  A spherical mesh centered around the water scatterer with fine divisions at small radii and in the direction of the target was used.  The values of the mesh were optimized based on the response of a point detector tally at the measurement position.  Point detectors are not able to capture the reflectivity effects since they estimate non-interaction along a straight line.  Therefore, neutrons were propagated down the guide using a DXTRAN sphere.  At every collision, the sphere forces a fraction of a neutron's weight to be placed at the sphere radius.  The weight is proportional to the probability to scatter in the direction of the sphere and arrive at it without colliding again.  After placement, these ``uncollided'' neutrons are transported normally \cite{mcnpx270}.  The sphere was placed around the sapphire crystal and surface source was then written from the downstream surface of the sapphire crystal.  The calculated spatial distributions of the thermal neutron current within a 5$^\circ$ cone normal to the water scatterer and the sapphire crystal are shown in Figures \ref{wsdist} and \ref{sappdist}, respectively.  The SINQ target is on the left side in both figures.
+The total fraction of neutrons that make it to EIGER is small ($\sim 10^{-6}$ per proton), and the low absorption means neutrons undergo many thousands of interactions before they are lost, on average.  This required the use of multiple variance reduction techniques in MCNPX.  The first technique used was mesh-based neutron weight windows.  A spherical mesh centered around the water scatterer with fine divisions at small radii and in the direction of the target was used.  The values of the mesh were optimized based on the response of a point detector tally at the measurement position.  Point detectors are not able to capture the reflectivity effects since they estimate non-interaction along a straight line.  Therefore, neutrons were propagated down the guide using a DXTRAN sphere.  At every collision, the sphere forces a fraction of a neutron's weight to be placed at the sphere radius.  The weight is proportional to the probability of the neutron scattering in the direction of the sphere and arriving there without colliding again.  After placement, these ``uncollided'' neutrons are transported normally \cite{mcnpx270}.  The DXTRAN sphere was placed around the sapphire crystal and a surface source was written from the downstream surface of the crystal.  The calculated spatial distributions of the thermal neutron current within a 5$^\circ$ cone normal to the water scatterer and the sapphire crystal are shown in Figures \ref{wsdist} and \ref{sappdist}, respectively.  The SINQ target is on the left side in both figures.
 
 
 \begin{figure}[!htb]
@@ -140,7 +140,7 @@ The reflectivity gain goes above unity below 200 meV and increases to 2.5 at 3 m
    \label{activation}
 \end{figure}
 
-It can be seen that the two calculated activity curves (ideal and no reflectivity) bracket the measured values, and that the highest gain factor is in the vertical center of the guide opening.  The lower plot in Figure \ref{activation} shows the relative difference of the ideal and measured gain factors.  The flux is less than 50\% of the ideal value at the vertical center of the guide, and about equal to the non-reflective case at the top and bottom of the guide.  The average value is 20\% if the -7.5 cm value is not considered.  The activity for this foil departs from the trend and may be the result of an incorrect measurement of its mass.
+It can be seen that the two calculated activity curves (ideal and no reflectivity) bracket the measured values, and that the highest gain factor is at the vertical center of the guide opening.  The lower plot in Figure \ref{activation} shows the relative difference of the ideal and measured gain factors.  The flux is less than 50\% of the ideal value at the vertical center of the guide, and about equal to the non-reflective case at the top and bottom of the guide.  The average value is 20\% if the -7.5 cm value is not considered.  The activity for this foil departs from the trend and may be the result of an incorrect measurement of its mass.
 
 
 \section{Conclusion}
