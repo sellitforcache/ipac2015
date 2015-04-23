@@ -49,17 +49,17 @@
 
 %
 \begin{abstract}
-   The EIGER triple-axis thermal neutron spectrometer beamline contains “supermirror” neutron guides, which preferentially reflect low-energy neutrons toward the EIGER spectrometer that come from the ambient temperature, light water neutron source in SINQ.  Gold foil and neutron imaging plate measurements have been performed at the EIGER beamline in 2013.  This process can be modeled from incident proton to thermal neutron exiting the EIGER beamline by using the neutron mirror capabilities of MCNPX, which should be more accurate than simulations with simplified neutron source distributions and geometry representations.  The supermirror reflectivity parameters have been measured previously, and these parameters are used in MCNPX 2.7.0 to reproduce the activity measured from the gold foil irradiation, verifying the neutron mirror modeling capabilities in MCNPX 2.7.0.
+   The EIGER triple-axis thermal neutron spectrometer beamline contains “supermirror” neutron guides, which preferentially reflect low-energy neutrons toward the EIGER spectrometer that come from the ambient temperature, light water neutron source in SINQ.  Gold foil measurements have been performed at the EIGER beamline in 2013.  This process can be modeled from incident proton to thermal neutron exiting the EIGER beamline by using the neutron mirror capabilities of MCNPX, which should be more accurate than simulations with simplified neutron source distributions and geometry representations.  The supermirror reflectivity parameters have been measured previously and are used in MCNPX 2.7.0 to reproduce the activity measured from the gold foil irradiation, verifying the neutron mirror modeling capabilities in MCNPX 2.7.0.
 \end{abstract}
 
 
 \section{Introduction}
 
-EIGER is a triple-axis thermal neutron spectrometer that looks at the light water scatterer inside SINQ, a spallation neutron source driven by a continuous 590 MeV proton beam at the Paul Scherrer Institut in Villigen, Switzerland.  The incoming protons impinge on a lead target cooled with heavy water, producing high energy neutrons.  These neutrons are moderated by the tank of D$_2$O surrounding the target.  The ``water scatterer'' is a set of seven vertical aluminum tubes 25 cm away from the center of the target that contain ambient temperature light water.  These tubes act as a scattering medium to send thermal neutrons streaming through evacuated nozzles towards neutron instruments.  
+EIGER is a triple-axis thermal neutron spectrometer that looks at the light water scatterer inside SINQ, a spallation neutron source driven by a continuous 590 MeV proton beam at the Paul Scherrer Institut in Villigen, Switzerland.  The incoming protons impinge on a lead target cooled with heavy water, producing high energy neutrons.  These neutrons are moderated by the tank of D$_2$O surrounding the target.  The ``water scatterer'' is a set of seven vertical aluminum tubes 25 cm away from the center of the target that contain ambient temperature light water.  These tubes act as a scattering medium to send thermal neutrons streaming through low pressure nozzles towards neutron instruments.  
 
-The neutron guide that extracts thermal neutrons from the water scatterer towards the EIGER instrument is internally covered with neutron ``supermirrors''.  These mirrors are reflective to low-energy neutrons, and allow the guide to transport neutrons with small divergence instead of only neutrons with trajectories parallel to the guide axis, increasing neutron extraction efficiency.  The reflectivity of the mirrors are described by Eq. \ref{eq:ref} where $R_0$ is nominal reflectivity, $Q_c$ is the critical momentum transfer, $m$ is the angular extension parameter, $\alpha$ is reflectivity declination parameter, and $W$ is the reflectivity edge width \cite{mcnpx-ref}.
+The neutron guide that delivers thermal neutrons from the water scatterer towards the EIGER instrument is internally covered with neutron ``supermirrors''.  These mirrors are reflective to low-energy neutrons, and allow the guide to transport neutrons with small divergence instead of only neutrons with trajectories parallel to the guide axis, increasing neutron extraction efficiency.  The reflectivity of the mirrors are described by Eq. \ref{eq:ref} where $R_0$ is nominal reflectivity, $Q_c$ is the critical momentum transfer, $m$ is the angular extension parameter, $\alpha$ is reflectivity declination parameter, and $W$ is the reflectivity edge width \cite{mcnpx-ref}.
 
-The reflectivity parameters of EIGER's supermirrors have been measured previously and determined to be $R_0=0.995$, $Q_c=2.17\times10^{-2}\AA^{-1}$, $m=3.6$, $\alpha=3.99 \AA$, and $W=10^{-3} \AA^{-1}$ \cite{eiger-uwe}.  The guide is rectangular, tapers in the horizontal plane from 80 mm wide near the moderator tank to 30 mm wide at the guide exit, and is a constant 150 mm tall in the vertical plane.  There is a 10 cm thick sapphire crystal near the moderator tank to preferentially scatter neutrons above 0.1 eV out of the beam.
+The reflectivity parameters of EIGER's supermirrors have been measured previously and determined to be $R_0=0.995$, $Q_c=2.17\times10^{-2}\AA^{-1}$, $m=3.6$, $\alpha=3.99 \AA$, and $W=10^{-3} \AA^{-1}$ \cite{eiger-uwe}.  The guide is rectangular, tapers in the horizontal plane from 80 mm wide near the moderator tank to 30 mm wide at the guide exit, and is a constant 150 mm tall in the vertical plane.  There is a 10 cm thick sapphire crystal near the moderator tank which acts as a neutron filter to preferentially scatter neutrons above 0.1 eV out of the beam \cite{freund}.
 
 \begin{equation}\label{eq:ref}
 R(Q) = 
@@ -85,10 +85,10 @@ The vertical array of six gold foils shown in Figure \ref{foils} were exposed to
    \label{foils}
 \end{figure}
 
-The foils were placed near the monochromator position at EIGER, near the center of its shielding.  The foils are 25 mm in diameter and 30 mm center-to-center.  The blue marker lines in the figure show the approximate extent of the neutron guide.  The average current on the SINQ target during the irradiation was $200 \mu A$, and the foils were exposed for 5 minutes.  The foils were allowed to decay for four days, then their activity was measured and back-corrected to midnight of that morning.
+The foils were placed near the monochromator position at EIGER.  The foils are 25 mm in diameter and 30 mm center-to-center.  The blue marker lines in the figure show the approximate extent of the neutron guide.  The average current on the SINQ target during the irradiation was $200 \mu A$, and the foils were exposed for 5 minutes.  After irradiation, activation analysis was performed using a gamma spectrometer.
 
 
-\section{MCNPX 2.7.0 Simulation}
+\section{EIGER Beamline Simulation}
 
 The MCNPX model geometry is shown in Figure \ref{geom}.  The major components are the lead target, the moderator tank, the water scatterer, the in-tank nozzles, the sapphire crystal, the neutron guide, and the shielding around SINQ and EIGER.  The MCNPX simulation used the relevant S($\alpha$,$\beta$) data, including those for the crystal sapphire \cite{sapp}.  The MCNPX model for the water scatterer was created from CAD models using the MCAM interface code developed by the FDS Team, China \cite{mcam}.
 
@@ -100,43 +100,43 @@ The MCNPX model geometry is shown in Figure \ref{geom}.  The major components ar
    \label{geom}
 \end{figure}
 
-The total fraction of neutrons that make it to EIGER is small ($\sim 10^{-6}$ per proton), and the low absorption means neutrons undergo many thousands of interactions before they are lost, on average.  This required the use of multiple variance reduction techniques in MCNPX.  The first technique used was mesh-based neutron weight windows.  A spherical mesh centered around the water scatterer with fine divisions at small radii and in the direction of the target was used.  The values of the mesh were optimized based on the response of a point detector tally at the measurement position.  Point detectors are not able to capture the reflectivity effects since they estimate non-interaction along a straight line.  Therefore, neutrons were propagated down the guide using a DXTRAN sphere.  At every collision, the sphere forces a fraction of a neutron's weight to be placed at the sphere radius.  The weight is proportional to the probability of the neutron scattering in the direction of the sphere and arriving there without colliding again.  After placement, these ``uncollided'' neutrons are transported normally \cite{mcnpx270}.  The DXTRAN sphere was placed around the sapphire crystal and a surface source was written from the downstream surface of the crystal.  The calculated spatial distributions of the thermal neutron current within a 5$^\circ$ cone normal to the water scatterer and the sapphire crystal are shown in Figures \ref{wsdist} and \ref{sappdist}, respectively.  The SINQ target is on the left side in both figures.
+The total fraction of neutrons that make it to EIGER is small ($\sim 10^{-6}$ per proton), and the low absorption means neutrons undergo many thousands of interactions before they are lost, on average.  This required the use of multiple variance reduction techniques in MCNPX.  The first technique used was mesh-based neutron weight windows.  A spherical mesh centered around the water scatterer with fine divisions at small radii and in the direction of the target was used.  The values of the mesh were optimized based on the response of a point detector tally at the measurement position.  Point detectors are not able to capture the reflectivity effects since they estimate non-interaction along a straight line.  Therefore, neutrons were propagated down the guide using a DXTRAN sphere.  At every collision, the sphere forces a fraction of a neutron's weight to be placed at the sphere radius.  The weight is proportional to the probability of the neutron scattering in the direction of the sphere and arriving there without colliding again.  After placement, these ``uncollided'' neutrons are transported normally \cite{mcnpx270}.  The DXTRAN sphere was placed around the sapphire crystal and a surface source was written from the downstream surface of the crystal.  The calculated spatial distributions of the thermal neutron current within a 5$^\circ$ cone normal to the water scatterer and the sapphire crystal are shown in Figure \ref{dists}.  The SINQ target is on the left side in both figures.  The neutron current spectra at the water scatterer and after the sapphire crystal are shown in Figure \ref{specs}.  The post-sapphire spectrum has a proportionally smaller component above 0.1 eV compared to the spectrum at the water scatterer surface.
 
 
 \begin{figure}[!htb]
    \centering
-   \includegraphics*[trim = 0mm 8mm 0mm 1.5mm, width=60mm]{graphics/wsdist.pdf}
-   \caption{The thermal neutron current distribution of the water scatterer in a 5$^\circ$ cone normal to its EIGER-facing surface.}
-   \label{wsdist}
+   \includegraphics*[trim = 0mm 0mm 0mm 0mm, width=80mm]{graphics/dists.pdf}
+   \caption{The thermal neutron current distribution in a 5$^\circ$ cone normal to the EIGER-facing surface water scatterer (left) and the downstream surface of the sapphire crystal (right).  The solid magenta curve shows the approximate view of the EIGER nozzle and the solid black rectangle shows the approximate view of the of sapphire crystal.}
+   \label{dists}
 \end{figure}
 
 \begin{figure}[!htb]
    \centering
-   \includegraphics*[trim = 0mm 8mm 0mm 2.5mm, width=60mm]{graphics/sappdist.pdf}
-   \caption{The thermal neutron current distribution in a 5$^\circ$ cone downstream of the sapphire crystal filter.}
-   \label{sappdist}
+   \includegraphics*[trim = 0mm 0mm 0mm 0mm, width=85mm]{graphics/specs.pdf}
+   \caption{The total neutron current spectrum at the water scatterer's EIGER-facing surface and at the downstream surface of the sapphire crystal.}
+   \label{specs}
 \end{figure}
 
 The post-sapphire distribution was used as the source term in a set of subsequent calculations with the neutron guide reflectivity turned on and off.  The surface source was sampled repeatedly with different initial random number seeds in order to capture the full weight variance of the sapphire surface source at the measurement point.  Much effort was made to keep the simulations as high-fidelity as possible; no spectral or spatial approximations were made with regard to the neutron population, and no geometrical simplifications were knowingly made.
 
 \section{Activation Results}
 
-The neutron energy spectrum at the measurement point was calculated with 128 equi-log bins from $10^{-12}$ to 600 MeV for cases with the guide reflectivity turned on and off.  The spectra and reflectivity gain factors (ratio of the spectra) from these two sets of calculations are shown in Figure \ref{gain}.  
+The neutron energy spectrum at the measurement point was calculated with 256 equi-log bins from $10^{-12}$ to 600 MeV for cases with the guide reflectivity turned on and off.  The spectra and reflectivity gain factors (ratio of the spectra) from these two sets of calculations are shown in Figure \ref{gain}.  
 
 %trim option's parameter order: left bottom right top
 \begin{figure}[!htb]
    \centering
    \includegraphics*[trim = 0mm 5mm 0mm 5mm, width=80mm]{graphics/gain.pdf}
-   \caption{Top: The average spectra at the gold foil irradiation position with the guide reflectivity turned on and off in MCNPX.  Bottom: The energy dependence of the reflectivity gain.}
+   \caption{The average flux spectra at the gold foil irradiation position with the guide reflectivity turned on and off in MCNPX (top), and the energy dependence of the reflectivity gain (bottom).}
    \label{gain}
 \end{figure}
 
-The reflectivity gain goes above unity below 200 meV and increases to 2.5 at 3 meV.  Below 3 meV, the statistics of the simulation start to become unreliable.  The gold (n,$\gamma$) macroscopic cross section was then averaged to the same binning as the spectra, multiplied by the spectra, and summed to determine the total reaction rate in the gold foils per incident proton on the SINQ target.  The aforementioned experimental irradiation and cooling parameters were then used to calculate the specific activity in the foils.  The results are shown in Figure \ref{activation}.
+The reflectivity gain goes above unity below 200 meV and increases to 2.5 at 3 meV.  Below 3 meV, the statistics of the simulation start to become unreliable.  The gold (n,$\gamma$) macroscopic cross section was then averaged to the same binning as the spectra, multiplied by the spectra, and summed to determine the total reaction rate in the gold foils per incident proton on the SINQ target.  The experimental irradiation and analysis parameters were then used to calculate the specific activity in the foils.  The results are shown in Figure \ref{activation}.
 
 \begin{figure}[!htb]
    \centering
-   \includegraphics*[trim = 0mm 5mm 15mm 25mm, width=83mm]{graphics/GF_act.pdf}
-   \caption{Top: The measured and calculated activity of the gold foils.  Middle:  The gain factors with regard to the reflectivity off case.  Bottom:  The relative difference in gain between the measured and ideal cases.}
+   \includegraphics*[trim = 0mm 5mm 0mm 5mm, width=83mm]{graphics/GF_act.pdf}
+   \caption{The measured and calculated activity of the gold foils (top), and the relative difference in gain between the measured and ideal cases (bottom).}
    \label{activation}
 \end{figure}
 
@@ -163,6 +163,11 @@ This work was supported by Swiss National Science Foundation grant 200021\_15004
   U. Filges, S. N. Gvasaliya, H.M. Ronnow, J. Birk,
   ``Monte Carlo Simulations for the new EIGER spectrometer at PSI'',
   4th European Conference on Neutron Scattering, 25-29 June, 2007, Lund, Sweden. 
+
+\bibitem{freund}
+A. K. Freund,
+``Cross-sections of materials used as neutron monochromators and filters'',
+Nuclear Instruments and Methods in Physics Research, vol 213, 1983, pp 495-501.
 
 \bibitem{mcnpx270}
    D.B. Pelowitz,
