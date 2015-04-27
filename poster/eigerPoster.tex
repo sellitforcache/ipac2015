@@ -26,6 +26,7 @@
 \usepackage[orientation=landscape,size=custom,width=200,height=120,scale=1.9]{beamerposter}
 \listfiles
 \graphicspath{{../graphics/}}
+\setbeamertemplate{bibliography item}[text]
 % Display a grid to help align images
 %\beamertemplategridbackground[1cm]
  
@@ -62,78 +63,88 @@
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
       \begin{block}{Introduction}
-        \begin{itemize}
-        \item automatic sign language recognition system                                    %what
-        \item \alert{necessary for communication} between deaf and
-          hearing people
-        \item \alert{continuous} sign language recognition,
-          \alert{several} speakers, \alert{vision-based} approach, \alert{no
-            special hardware}
-        \item large vocabulary speech recognition (LVSR) system to
-          obtain a textual representation of the signed
-          sentences 
-        \item evaluation of speech recognition techniques on \alert{publicly
-          available sign language
-          corpus}
-        \end{itemize}
 
-        \begin{equation}\label{eq:ref}
-            R(Q) = 
-            \begin{cases}
-                Q > Q_c;  \qquad \frac{R_0}{2}\left\{  1 - \tanh\left(  \frac{Q - m Q_c}{W}\right) \right\}\{1-\alpha(Q-Q_c)\} \\
-                Q \leq Q_c; \qquad R_0 \\
-            \end{cases}
-        \end{equation}
+\begin{columns}
+\begin{column}{.6\linewidth}
+\noindent{\hskip1cm\textbf{SINQ}}
+\begin{itemize}
+  \item Spallation neutron source
+  \item Continuous 590 MeV proton beam
+  \item Lead target
+  \item D$_2$O moderator tank  
+\end{itemize}
 
-        pic of reflectivity curve?
+\noindent{\hskip1cm\textbf{EIGER}}
+\begin{itemize}
+\item Triple-axis thermal neutron spectrometer 
+\end{itemize}
+
+\noindent{\hskip1cm\textbf{Light Water Scatterer}} 
+\begin{itemize}
+\item Seven vertical aluminum tubes near the target 
+\end{itemize}
+
+\noindent{\hskip1cm\textbf{Neutron Guide}} 
+  \begin{itemize} 
+  \item Supermirrors reflective to low-energy neutrons
+  \item Allow the guide to transport neutrons with small divergence
+  \item Reflectivity parameters of EIGER's supermirrors have been measured
+  \item Sapphire crystal filters $>$0.1 eV \cite{freund}.
+  \end{itemize}
+\end{column}
+
+\begin{column}{.4\linewidth}
+\noindent{\hskip1cm\textbf{Study Goals}} 
+  \begin{itemize}
+  \item Verify neutron reflectivity is working in MCNPX 2.7.0
+  \item Verify that reflectivity works with MPI parallelism
+  \item Compare calculated and measured gold foil activities
+  \end{itemize}
+\end{column}
+\end{columns}
+
+        %\begin{equation}\label{eq:ref}
+        %    R(Q) = 
+        %    \begin{cases}
+        %        Q > Q_c;  \qquad \frac{R_0}{2}\left\{  1 - \tanh\left(  \frac{Q - m Q_c}{W}\right) \right\}\{1-\alpha(Q-Q_c)\} \\
+        %        Q \leq Q_c; \qquad R_0 \\
+        %    \end{cases}
+        %\end{equation}
+
+        %pic of reflectivity curve?
 
       \end{block}
 
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \begin{block}{EIGER Beamline Geometry}
       
-      \begin{block}{Gold Foil Measurement}
         \begin{columns}[T]
           \begin{column}{.75\linewidth}
-            The vertical array of six gold foils shown in Figure \ref{foils} were exposed to the EIGER beam in December, 2013.   The foils were placed near the monochromator position at EIGER.  The foils are 25 mm in diameter and 30 mm center-to-center.  The blue marker lines in the figure show the approximate extent of the neutron guide.  The average current on the SINQ target during the irradiation was $200 \mu A$, and the foils were exposed for 5 minutes.  After irradiation, activation analysis was performed using a gamma spectrometer.
-          \end{column}
+        
+        \includegraphics*[width=\linewidth]{exp.jpg}
+
+        \includegraphics*[width=\linewidth]{geom.pdf}
+        
+        \end{column}
           \begin{column}{.25\linewidth}
-            \includegraphics*[width=\linewidth]{foils.eps}
-          \end{column}
-        \end{columns}
+
+          \begin{center}
+          \includegraphics*[width=\linewidth]{eiger_lr.png}
+          \end{center}
+
+          \begin{itemize} 
+          \item As high-fidelity as possible
+          \item S($\alpha$,$\beta$) data used, including those for the crystal sapphire \cite{sapp}
+          \item Water scatterer model created from CAD models using MCAM \cite{mcam}
+          \end{itemize}
+
+        \end{column}
+      \end{columns}
+      
       \end{block}
+
 
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      \begin{block}{MCNPX Geometry}
-        \begin{columns}[t]
-          \begin{column}{.75\linewidth}
-            \noindent{\hskip1cm\textbf{Database}}
-            \begin{itemize}
-            \item system evaluation on the RWTH-BOSTON-104 database
-              \begin{itemize}
-              \item \alert{201 sentences} (161 training and 40 test sequences)
-              \end{itemize}
-            \end{itemize}
-
-            \vskip1ex            
-            \noindent{\hskip1cm\textbf{Problems}}
-            \begin{itemize}
-            \item 26\% of the training data are \alert{singletons}
-            \end{itemize}
-
-            \vskip1ex            
-            \noindent{\hskip1cm\textbf{Differences in Comparison to ASR}}
-            \begin{itemize}
-            \item simultaneousness                       % multi-channel ... but unclear if necessary
-            \end{itemize}
-          \end{column}
-
-          \begin{column}{.25\linewidth}
-                 
-          \end{column}
-        \end{columns}
-
-      \end{block}
-
 
       \end{column}
 
@@ -141,144 +152,199 @@
 
 
     \begin{column}{.3\linewidth}
+
+    \begin{block}{Gold Foil Measurement}
+        \begin{columns}[T]
+          \begin{column}{.65\linewidth}
+          \begin{itemize} 
+          \item Vertical array of six gold foils, 25 mm in diameter, 30 mm center-to-center
+          \item Placed near the monochromator position at EIGER
+          \item Exposed to $200 \mu A$ for 5 minutes in December, 2013
+          \item Activation analysis was performed using a gamma spectrometer after irradiation
+          \end{itemize}
+
+            
+          \end{column}
+          \begin{column}{.35\linewidth}
+            \includegraphics*[angle=90,width=\linewidth]{foils.eps}
+          \end{column}
+        \end{columns}
+      \end{block}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
       \begin{block}{Variance Reduction}
-       
 
-      \end{block}
+      \begin{center} Approximately $\sim 10^{-6}$ neutrons per proton make it to EIGER. \end{center}
 
-    \end{column}
+      \begin{columns}
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    \begin{column}{.3\linewidth}
+      \begin{column}{0.5\linewidth}
 
-      \begin{block}{Experimental \vs Calculated Results}
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \centering
-        \includegraphics[width=0.33\linewidth]{specs.pdf}%
-        \includegraphics[width=0.33\linewidth]{specs.pdf}%
-        \includegraphics[width=0.33\linewidth]{specs.pdf}%
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \begin{center}
+      \includegraphics*[width=\linewidth]{wwg.pdf}
 
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \begin{table}
-        \end{table}
-      \end{block}
+      \includegraphics*[width=\linewidth]{wwg_mesh.pdf}
+      \end{center}
+
+      \noindent{\hskip1cm\textbf{Mesh-Based Weight Windows}}
+      \begin{itemize}
+      \item Spherical mesh centered around the water scatterer 
+      \item Fine divisions at small radii and in the direction of the target 
+      \item Optimized on response of a point detector at the measurement position
+      \end{itemize}
+
+      \end{column}
+
+
+      \begin{column}{0.5\linewidth}
+
+      \noindent{\hskip1cm\textbf{DXTRAN Sphere}}
+      \begin{itemize}
+      \item Placed around the sapphire crystal 
+      \item Force a fraction of a neutron's weight to be placed at the sphere radius at every collision.
+      \item ``Uncollided'' neutrons transported normally after placement \cite{mcnpx270}
+      \end{itemize}
+
+      \begin{center}
+      \includegraphics*[width=.85\linewidth]{crystal.pdf}
+      \end{center}
       
-      \vskip-2ex
-      \begin{columns}[t]
-        ~~
-        \begin{column}{.57\linewidth}
-          \begin{block}{Example Results}   
-            \noindent{\hskip1cm\textbf{Correct Examples}}        
-            \hrule
-            \begin{tabular}{@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c}
-              IX-1P & \ \ FIND & \ \ SOMETHING-ONE & \ \ BOOK\\
-              \textcolor{black}{IX-1P} & \ \ \textcolor{black}{FIND} & \ \ \textcolor{black}{SOMETHING-ONE} & \ \ \textcolor{black}{BOOK}
-            \end{tabular}
-            \hrule
-            \begin{tabular}{@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c}
-              JOHN & \ \ FISH & \ \ WONT & \ \ EAT & \ \ BUT & \ \ CAN & \ \ EAT & \ \ CHICKEN\\
-              \textcolor{black}{JOHN} & \ \ \textcolor{black}{FISH} & \ \ \textcolor{black}{WONT} & \ \ \textcolor{black}{EAT} & \ \ \textcolor{black}{BUT} & \ \ \textcolor{black}{CAN} & \ \ \textcolor{black}{EAT} & \ \ \textcolor{black}{CHICKEN}
-            \end{tabular}
-            \hrule
-            \begin{tabular}{@{}>{\small}c@{}>{\small}c@{}>{\small}c}
-              LOVE & \ \ JOHN & \ \ WHO\\
-              \textcolor{black}{LOVE} & \ \ \textcolor{black}{JOHN} & \ \ \textcolor{black}{WHO}
-            \end{tabular}
-            \hrule
-            \begin{tabular}{@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c}
-              JOHN & \ \ BUY & \ \ YESTERDAY & \ \ WHAT & \ \ BOOK\\
-              \textcolor{black}{JOHN} & \ \ \textcolor{black}{BUY} & \ \ \textcolor{black}{YESTERDAY} & \ \ \textcolor{black}{WHAT} & \ \ \textcolor{black}{BOOK}
-            \end{tabular}
-            \hrule          
-            \vskip2ex
-            \noindent{\hskip1cm\textbf{Incorrect Examples}}\par                              
-            \hrule
-            \begin{tabular}{@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c}
-              MARY & \ \ VEGETABLE & \ \ KNOW & \ \ IX & \ \ LIKE & \ \ CORN\\
-              \textcolor{black}{MARY} & \ \ \textcolor{black}{VEGETABLE} & \ \ \textcolor{black}{KNOW} & \ \ \textcolor{black}{IX} & \ \ \textcolor{black}{LIKE} & \ \ \textcolor{red}{MARY}
-            \end{tabular}
-            \hrule
-            \begin{tabular}{@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c}
-              JOHN & \ \ IX & \ \ GIVE & \ \ MAN & \ \ IX & \ \ NEW & \ \ COAT\\
-              \textcolor{black}{JOHN} & \ \ \textcolor{black}{IX} & \ \ \textcolor{red}{WOMAN} & \ \ \textcolor{black}{\underline{\phantom{MAN}}} & \ \ \textcolor{black}{\underline{\phantom{IX}}} & \ \ \textcolor{black}{NEW} & \ \ \textcolor{black}{COAT}
-            \end{tabular}
-            \hrule
-            \begin{tabular}{@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c}
-              & \ \ LIKE & \ \ CHOCOLATE & \ \ WHO\\
-              \textcolor{green}{JOHN} & \ \ \textcolor{black}{LIKE} & \ \ \textcolor{black}{CHOCOLATE} & \ \ \textcolor{black}{WHO}
-            \end{tabular}
-            \hrule
-            \begin{tabular}{@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c@{}>{\small}c}
-              JOHN & \ \ [UNKNOWN] & \ \  & \ \ BUY & \ \ HOUSE\\
-              \textcolor{black}{JOHN} & \ \ \textcolor{red}{FUTURE} & \ \ \textcolor{green}{NOT} & \ \ \textcolor{black}{BUY} & \ \ \textcolor{black}{HOUSE}
-            \end{tabular}
-            \hrule
-            \vspace{-1ex}            
-          \end{block}
-        \end{column}
-        ~
-        \begin{column}{.4\linewidth}
-          \begin{block}{RWTH-BOSTON-104 Database}   
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            \noindent{\hskip1cm\textbf{Corpus Statistics}}        
-            \begin{table}
-              \centering
-              %\footnotesize
-              %\caption{Corpus Statistics}
-              \begin{tabular}{@{} p{.5\linewidth}  r r @{}}
-                \toprule
-                                 & Training   &  Test \\
-                \midrule
-                sentences        & 161        &  40   \\
-                running words    & 710        & 178   \\
-                frames           & 12422      & 3324  \\
-                vocabulary       & 103        &  65   \\
-                singletons       &  27        &   9   \\
-                OOV              & -          &   1   \\
-                \bottomrule
-              \end{tabular}
-            \end{table}
-            \vskip2ex
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            \noindent{\hskip1cm\textbf{LM Perplexities}}        
-            \begin{table}
-              \centering
-              %\caption{}
-              \begin{tabular}{@{} p{.8\linewidth} r @{}}
-                \toprule
-                LM type     & $PP$ \\
-                \hline
-                zerogram    & 106.0 \\
-                unigram     & 36.8 \\
-                bigram      & 6.7 \\
-                trigram     & 4.7 \\
-                \bottomrule
-              \end{tabular}
-            \end{table}
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            \vskip2ex
-            Database is publicly available
-          \end{block}
-        \end{column}
+      \end{column}
+
       \end{columns}
-                
-      \begin{block}{Conclusion}
+
+      \end{block}
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+      \vspace{5ex}
+
+      \begin{block}{\alert{Conclusions}}
         \begin{itemize}
-        \item LVSR system is suitable for vision-based continuous sign language recognition
-        \item many of the principles known from ASR can directly be transfered 
-        \item important for ASLR: temporal contexts, pronunciation handling, language modelling, and model combination
-        \item \alert{outlook:} connection of recognizer output to a
-          statistical machine translation system achieved promising
-          translation results
+        \item Confirmation guide reflectivity can be completely modeled in MCNPX 2.7.0
+        \item Results indicate EIGER supermirrors are operating at 20\% of ``ideal'' capacity 
         \end{itemize}
         \vspace{-1ex}
       \end{block}
+
+
+    \end{column}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \begin{column}{.3\linewidth}
+
+    \begin{block}{Intermediate Results}
+
+      \begin{columns}
+
+      \begin{column}{0.6\linewidth}
+
+        \includegraphics*[width=\linewidth]{dists.pdf}
+
+        \includegraphics*[width=\linewidth]{specs_narrow.eps}
+
+      \end{column}
+
+      \begin{column}{0.3\linewidth}
+
+      \begin{itemize}
+        \item Visual confirmation of ditribution convergence
+        \item The post-sapphire spectrum has a proportionally smaller component above 0.1 eV
+        \item The post-sapphire distribution used as the source in subsequent calculations with the neutron guide reflectivity turned on and off. 
+        \end{itemize}
+
+      \end{column}
+
+      \end{columns}
+
+      \end{block}
+
+
+      \begin{block}{Experimental \vs Calculated Results}
+
+      \begin{columns}
+
+      \begin{column}{0.5\linewidth}
+
+      \begin{center}
+      \includegraphics*[width=\linewidth]{gain.pdf}
+      \end{center}
+
+      \begin{itemize}
+      \item Surface source sampled repeatedly with different seeds  
+      %\item 256 equi-log bins from $10^{-12}$ to 600 MeV
+      \item Reflectivity $>$1 below 200 meV and increases to 2.5 at 3 meV
+      \item The gold (n,$\gamma$) folded to determine the total reaction rate per incident proton
+      \end{itemize}
+
+      \end{column}
+
+
+      \begin{column}{0.5\linewidth}
+
+      \begin{itemize}
+      \item Peak at center, less than 50\% of ideal
+      \item Equal to the non-reflective guide edges
+      \item The average value is 20\% if the -7.5 cm value is not considered (potential mass error)
+      \end{itemize}
+
+      \begin{center}
+      \includegraphics*[width=\linewidth]{GF_act.pdf}
+      \end{center}
+      
+      \end{column}
+
+      \end{columns}
+
+      \end{block}
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \end{column}
   \end{columns}
+
+      \begin{block}{References}
+
+      \bibliographystyle{unsrt}
+        \begin{thebibliography}{9}   % Use for  1-9  references
+\scriptsize
+\bibitem{mcnpx-ref}
+  F. X. Gallmeier, M. Wohlmuther, U. Filges, D. Kiselev, G. Muhrer,
+  ``Implementation of Neutron Mirror Modeling Capability into MCNPX and Its Demonstration in First Applications'',
+  Nuclear Technology Vol. 168 No. 3, December 2009, pp 768-772. 
+
+\bibitem{eiger-uwe}
+  U. Filges, S. N. Gvasaliya, H.M. Ronnow, J. Birk,
+  ``Monte Carlo Simulations for the new EIGER spectrometer at PSI'',
+  4th European Conference on Neutron Scattering, 25-29 June, 2007, Lund, Sweden. 
+
+\bibitem{freund}
+A. K. Freund,
+``Cross-sections of materials used as neutron monochromators and filters'',
+Nuclear Instruments and Methods in Physics Research, vol 213, 1983, pp 495-501.
+
+\bibitem{mcnpx270}
+   D.B. Pelowitz,
+   ``MCNPX Manual, Version 2.7.0'',
+   La-Cp-11-00438, April, 2011.
+
+\bibitem{sapp}
+  F. Cantargi, J.R. Granada, R.E. Mayer, 
+  ``Thermal neutron scattering kernels for sapphire and silicon single crystals'', 
+  Annals of Nuclear Energy 80, 2015, pp 43–46.  
+
+\bibitem{mcam}
+  Y. Wu, FDS Team, 
+  ``CAD-based interface programs for fusion neutron transport simulation'', 
+  Fusion Engineering and Design 84, 2009, 1987–1992. \\
+
+\end{thebibliography}
+      \end{block}
+
 \end{frame}
 
 \end{document}
