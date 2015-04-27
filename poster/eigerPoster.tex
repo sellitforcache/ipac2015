@@ -76,37 +76,34 @@
           available sign language
           corpus}
         \end{itemize}
+
+        \begin{equation}\label{eq:ref}
+            R(Q) = 
+            \begin{cases}
+                Q > Q_c;  \qquad \frac{R_0}{2}\left\{  1 - \tanh\left(  \frac{Q - m Q_c}{W}\right) \right\}\{1-\alpha(Q-Q_c)\} \\
+                Q \leq Q_c; \qquad R_0 \\
+            \end{cases}
+        \end{equation}
+
+        pic of reflectivity curve?
+
       \end{block}
 
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       
-      \begin{block}{Automatic Sign Language Recognition (ASLR)}
+      \begin{block}{Gold Foil Measurement}
         \begin{columns}[T]
-          \begin{column}{.49\linewidth}
-            \begin{itemize}
-            \item \alert{similar to speech recognition}: temporal sequences of images
-            \item important features
-              \begin{itemize}
-              \item hand-shapes, facial expressions, lip-patterns
-              \item orientation and movement of the hands, arms or body
-              \end{itemize}
-            \item HMMs are used to compensate time and amplitude variations of the signers\par
-              \vskip2ex              
-              \centerline{\includegraphics[width=.5\linewidth]{specs.pdf}}
-            \end{itemize}
+          \begin{column}{.75\linewidth}
+            The vertical array of six gold foils shown in Figure \ref{foils} were exposed to the EIGER beam in December, 2013.   The foils were placed near the monochromator position at EIGER.  The foils are 25 mm in diameter and 30 mm center-to-center.  The blue marker lines in the figure show the approximate extent of the neutron guide.  The average current on the SINQ target during the irradiation was $200 \mu A$, and the foils were exposed for 5 minutes.  After irradiation, activation analysis was performed using a gamma spectrometer.
           \end{column}
-          \begin{column}{.49\linewidth}
-            \begin{itemize}
-            \item \alert{goal:} find the model which best expresses the observation sequence
-            \end{itemize}
-            \vskip2ex
-            \includegraphics[width=\linewidth]{specs.pdf}
+          \begin{column}{.25\linewidth}
+            \includegraphics*[width=\linewidth]{foils.eps}
           \end{column}
         \end{columns}
       \end{block}
 
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      \begin{block}{Experimental Setup}
+      \begin{block}{MCNPX Geometry}
         \begin{columns}[t]
           \begin{column}{.75\linewidth}
             \noindent{\hskip1cm\textbf{Database}}
@@ -114,9 +111,6 @@
             \item system evaluation on the RWTH-BOSTON-104 database
               \begin{itemize}
               \item \alert{201 sentences} (161 training and 40 test sequences)
-              \item vocabulary size of \alert{104 words}
-              \item 3 speakers (2 female, 1 male)
-              \item corpus is annotated in glosses
               \end{itemize}
             \end{itemize}
 
@@ -124,125 +118,32 @@
             \noindent{\hskip1cm\textbf{Problems}}
             \begin{itemize}
             \item 26\% of the training data are \alert{singletons}
-            \item simple sentence structure
-            \item one out-of-vocabulary (OOV) words with whole-word models
             \end{itemize}
 
             \vskip1ex            
             \noindent{\hskip1cm\textbf{Differences in Comparison to ASR}}
             \begin{itemize}
             \item simultaneousness                       % multi-channel ... but unclear if necessary
-            \item signing space                          % verb flexion, negation, ... 
-            \item environment                            % cluttered background, clothes, lighting, ... different microphones in ASR?
-            \item speakers and dialects                  % as in ASR 
-            \item coarticulation and movement epenthesis % 
-            \item silence                                % unclear as there might be no energy changes in signal but still information, e.g. holded signs
-            \item whole-word models and sub-word units   % necessary for large-vocabulary systems
             \end{itemize}
           \end{column}
 
           \begin{column}{.25\linewidth}
-            \vskip0ex
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            \centering    
-            \includegraphics[width=0.7\linewidth]{specs.pdf}\\[1ex]
-            \includegraphics[width=0.7\linewidth]{specs.pdf}\\[1ex]
-            \includegraphics[width=0.7\linewidth]{specs.pdf}\\[1ex]          
-            \includegraphics[width=0.7\linewidth]{specs.pdf}\\[1ex]          
+                 
           \end{column}
         \end{columns}
 
       \end{block}
+
+
+      \end{column}
 
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \end{column}
+
     \begin{column}{.3\linewidth}
-      \begin{block}{System Overview}
-        \vfill
-        \noindent{\textbf{Visual Modeling (VM)}}
-        \begin{itemize}
-        \item related to the acoustic model in ASR
-        \item HMM based, with separate GMMs, globally pooled diag. covariance matrix
-        \item monophone whole-word models
-        \item pronunciation handling
-        \end{itemize}
+      \begin{block}{Variance Reduction}
+       
 
-        \vskip1ex
-        \noindent{\textbf{Language Modeling (LM)}}
-        \begin{itemize}
-        \item according to ASR: LM should have a greater weight than the VM
-        \item trigram LM using the SRILM toolkit, with modified Kneser-Ney discounting with interpolation
-        \end{itemize}
-
-        \vskip1ex
-        \begin{columns}[t]
-          \begin{column}{.5\linewidth}
-            \noindent{\hskip1cm\textbf{Features}}\par
-            \begin{itemize}
-            \item \alert{appearance-based image features}: for baseline system
-              \begin{itemize}
-              \item thumb\-nails of video se\-quen\-ce fra\-mes (intensity images scaled to 32x32 pixels)
-              \item give a global description of all (manual and non-manual) features proposed in linguistic research
-              \end{itemize}
-            \item \alert{manual features}: 
-              \begin{itemize}
-              \item dominant hand \alert{tracking}: hand position,
-                hand velocity, and hand trajectory features
-              \end{itemize}
-            \end{itemize}
-          \end{column}
-          \begin{column}{.5\linewidth}
-            \vskip0ex
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            \centering
-            \includegraphics[height=0.33\linewidth]{specs.pdf}
-            \quad\quad
-            \includegraphics[height=0.33\linewidth]{specs.pdf}
-            \vskip3ex
-            \includegraphics[height=0.4\linewidth]{specs.pdf}
-            \quad
-            \includegraphics[height=0.4\linewidth]{specs.pdf}
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-          \end{column}
-        \end{columns}
-      \end{block}
-
-      \begin{block}{Feature Selection and Model Combination}
-        \begin{columns}[T]
-          \begin{column}{.35\linewidth}
-            \noindent{\hskip1cm\textbf{Feature Selection}}\par
-            \begin{itemize}
-            \item \alert{concatenation} of appearance-based and manual features
-            \item \alert{sliding window} for context modeling
-            \item \alert{dimensionality reduction} by PCA and/or LDA
-            \end{itemize}
-          \end{column}
-          \begin{column}{.65\linewidth}
-            \raggedleft
-            \includegraphics[width=.95\linewidth]{specs.pdf}%
-          \end{column}
-        \end{columns}
-
-        \vskip5ex
-        \begin{columns}[T]
-          \begin{column}{.35\linewidth}
-            \noindent{\hskip1cm\textbf{Model Combination}}\par
-            \begin{itemize}
-            \item \alert{log-linear combination} of independently
-              trained models
-            \item profit from independent alignments (\eg performing well for long and short words)
-            \item profit from different feature extraction approaches
-            \end{itemize}
-          \end{column}
-          \begin{column}{.65\linewidth}
-            \raggedleft
-            \includegraphics[width=\linewidth]{specs.pdf}
-          \end{column}
-        \end{columns}
-
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       \end{block}
 
     \end{column}
@@ -251,7 +152,7 @@
     
     \begin{column}{.3\linewidth}
 
-      \begin{block}{Experimental Results}
+      \begin{block}{Experimental \vs Calculated Results}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \centering
         \includegraphics[width=0.33\linewidth]{specs.pdf}%
