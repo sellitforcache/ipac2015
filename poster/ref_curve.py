@@ -13,11 +13,11 @@ plt.rc('font', family='serif')
 plt.rc('font', size=16)
 
 def refl(q):
-	r0= 0.99
-	qc= 2.19e-2
-	m = 2
-	a = 6.07
-	w = 3e-3
+	r0= 0.995
+	qc= 2.17e-2
+	m = 3.6
+	a = 3.99
+	w = 1e-3
 	if q <= qc:
 		return r0
 	else:

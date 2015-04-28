@@ -115,11 +115,11 @@ The EIGER triple-axis thermal neutron spectrometer beamline contains ``supermirr
   \item Compare calculated and measured gold foil activities
   \end{itemize}
 
-  \noindent{\hskip1cm\textbf{EIGER Parameters}}
+  \noindent{\hskip1cm\textbf{EIGER Parameters}}  
         \begin{tabular}{l l l l}
-        $R_0$    & = $0.99            $ & $ Q_c  $  & = $ 2.19 \times 10^{-2} $\\
-        $m  $    & = $2               $ & $\alpha$  & = $ 6.07 $ \\
-        $W  $    & = $3 \times 10^{-3}$ & $      $  &   
+        $R_0$    & = $0.995           $ & $ Q_c  $  & = $ 2.17 \times 10^{-2} $\\
+        $m  $    & = $3.6             $ & $\alpha$  & = $ 3.99 $ \\
+        $W  $    & = $1 \times 10^{-3}$ & $      $  &   
         \end{tabular}
 
     \includegraphics*[width=\linewidth]{reflectivity_curve.pdf}
@@ -265,9 +265,9 @@ The EIGER triple-axis thermal neutron spectrometer beamline contains ``supermirr
         \begin{columns}[T]
           \begin{column}{.65\linewidth}
           \begin{itemize} 
-          \item Vertical array of six gold foils, 25 mm in diameter, 30 mm center-to-center
+          \item Vertical array of six gold foils, \alert{25 mm} in diameter, 30 mm center-to-center
           \item Placed near the monochromator position at EIGER
-          \item Exposed to $200 \mu A$ for 5 minutes in December, 2013
+          \item Exposed to \alert{$200 \mu A$} for \alert{5 minutes} in December, 2013
           \item Activation analysis was performed using a gamma spectrometer after irradiation
           \end{itemize}
 
@@ -309,25 +309,23 @@ The EIGER triple-axis thermal neutron spectrometer beamline contains ``supermirr
 
       \begin{column}{0.5\linewidth}
 
-     
       \begin{itemize}
-      \item Peak at center, less than 50\% of ideal
-      \item Equal to the non-reflective guide edges
-      \item The average value is 20\% if the -7.5 cm value is not considered (potential mass error)
+      \item Surface source sampled repeatedly with different seeds  
+      \item 256 equi-log bins from $10^{-12}$ to 600 MeV
+      \item Reflectivity \alert{$>$1} below 200 meV 
+      \item Reflectivity increases to \alert{2.5} at 3 meV
+      \item The gold (n,$\gamma$) folded to determine the total reaction rate per incident proton
       \end{itemize}
-
 
       \end{column}
 
       \begin{column}{0.5\linewidth}
 
       \begin{itemize}
-      \item Surface source sampled repeatedly with different seeds  
-      \item 256 equi-log bins from $10^{-12}$ to 600 MeV
-      \item Reflectivity $>$1 below 200 meV and increases to 2.5 at 3 meV
-      \item The gold (n,$\gamma$) folded to determine the total reaction rate per incident proton
+      \item Peak at vertical center, less than \alert{50\%} of ideal
+      \item Equal to a non-reflective guide at vertical edges
+      \item The average value is \alert{20\%} if the -7.5 cm value is not considered (potential mass error)
       \end{itemize}
-
 
       \end{column}
 
@@ -343,8 +341,8 @@ The EIGER triple-axis thermal neutron spectrometer beamline contains ``supermirr
 
       \begin{block}{\alert{Conclusions}}
         \begin{itemize}
-        \item Confirmation guide reflectivity can be completely modeled in MCNPX 2.7.0
-        \item Results indicate EIGER supermirrors are operating at 20\% of ``ideal'' capacity 
+        \item Comfirmation that guide reflectivity can be completely modeled in MCNPX 2.7.0
+        \item Results indicate EIGER neutron supermirrors are operating at 20\% of ``ideal'' capacity 
         \end{itemize}
         \vspace{-1ex}
       \end{block}
