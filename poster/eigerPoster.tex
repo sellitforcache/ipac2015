@@ -100,18 +100,19 @@
   \item Verify that reflectivity works with MPI parallelism
   \item Compare calculated and measured gold foil activities
   \end{itemize}
+
+    \includegraphics*[width=\linewidth]{reflectivity_curve.pdf}
+
 \end{column}
 \end{columns}
-
-        %\begin{equation}\label{eq:ref}
-        %    R(Q) = 
-        %    \begin{cases}
-        %        Q > Q_c;  \qquad \frac{R_0}{2}\left\{  1 - \tanh\left(  \frac{Q - m Q_c}{W}\right) \right\}\{1-\alpha(Q-Q_c)\} \\
-        %        Q \leq Q_c; \qquad R_0 \\
-        %    \end{cases}
-        %\end{equation}
-
-        %pic of reflectivity curve?
+\vspace{2ex}
+\begin{equation}\label{eq:ref}
+        R(Q) = 
+        \begin{cases}
+            Q > Q_c;  \qquad \frac{R_0}{2}\left\{  1 - \tanh\left(  \frac{Q - m Q_c}{W}\right) \right\}\{1-\alpha(Q-Q_c)\} \\
+            Q \leq Q_c; \qquad R_0 \\
+        \end{cases}
+    \end{equation}
 
       \end{block}
 
@@ -143,17 +144,9 @@
       
       \end{block}
 
-
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-      \end{column}
-
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-    \begin{column}{.3\linewidth}
-
-    \begin{block}{Gold Foil Measurement}
+      \begin{block}{Gold Foil Measurement}
         \begin{columns}[T]
           \begin{column}{.65\linewidth}
           \begin{itemize} 
@@ -171,7 +164,15 @@
         \end{columns}
       \end{block}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+      \end{column}
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+    \begin{column}{.3\linewidth}
 
       \begin{block}{Variance Reduction}
 
@@ -216,38 +217,21 @@
 
       \end{block}
 
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \begin{block}{Intermediate Results}
 
-      \vspace{5ex}
-
-      \begin{block}{\alert{Conclusions}}
-        \begin{itemize}
-        \item Confirmation guide reflectivity can be completely modeled in MCNPX 2.7.0
-        \item Results indicate EIGER supermirrors are operating at 20\% of ``ideal'' capacity 
-        \end{itemize}
-        \vspace{-1ex}
-      \end{block}
-
-
-    \end{column}
-
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    \begin{column}{.3\linewidth}
-
-    \begin{block}{Intermediate Results}
+     \includegraphics*[width=\linewidth]{dists.pdf}
 
       \begin{columns}
 
-      \begin{column}{0.6\linewidth}
+      \begin{column}{0.5\linewidth}
 
-        \includegraphics*[width=\linewidth]{dists.pdf}
+       
 
         \includegraphics*[width=\linewidth]{specs_narrow.eps}
 
       \end{column}
 
-      \begin{column}{0.3\linewidth}
+      \begin{column}{0.5\linewidth}
 
       \begin{itemize}
         \item Visual confirmation of ditribution convergence
@@ -261,15 +245,23 @@
 
       \end{block}
 
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+    \end{column}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \begin{column}{.3\linewidth}
 
       \begin{block}{Experimental \vs Calculated Results}
 
-      \begin{columns}
+      %\begin{columns}
 
-      \begin{column}{0.5\linewidth}
+      %\begin{column}{0.5\linewidth}
 
       \begin{center}
-      \includegraphics*[width=\linewidth]{gain.pdf}
+      \includegraphics*[width=0.75\linewidth]{gain.pdf}
       \end{center}
 
       \begin{itemize}
@@ -279,35 +271,44 @@
       \item The gold (n,$\gamma$) folded to determine the total reaction rate per incident proton
       \end{itemize}
 
-      \end{column}
+      %\end{column}
 
 
-      \begin{column}{0.5\linewidth}
+      %\begin{column}{0.5\linewidth}
+
+      \begin{center}
+      \includegraphics*[width=0.75\linewidth]{GF_act.pdf}
+      \end{center}
 
       \begin{itemize}
       \item Peak at center, less than 50\% of ideal
       \item Equal to the non-reflective guide edges
       \item The average value is 20\% if the -7.5 cm value is not considered (potential mass error)
       \end{itemize}
-
-      \begin{center}
-      \includegraphics*[width=\linewidth]{GF_act.pdf}
-      \end{center}
       
-      \end{column}
+      %\end{column}
 
-      \end{columns}
+      %\end{columns}
 
       \end{block}
 
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      %\vspace{5ex}
 
-    \end{column}
-  \end{columns}
+      \begin{block}{\alert{Conclusions}}
+        \begin{itemize}
+        \item Confirmation guide reflectivity can be completely modeled in MCNPX 2.7.0
+        \item Results indicate EIGER supermirrors are operating at 20\% of ``ideal'' capacity 
+        \end{itemize}
+        \vspace{-1ex}
+      \end{block}
 
-      \begin{block}{References}
+      %\vspace{5ex}
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            \begin{block}{References}
 
       \bibliographystyle{unsrt}
         \begin{thebibliography}{9}   % Use for  1-9  references
@@ -344,6 +345,13 @@ Nuclear Instruments and Methods in Physics Research, vol 213, 1983, pp 495-501.
 
 \end{thebibliography}
       \end{block}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \end{column}
+  \end{columns}
+
+
 
 \end{frame}
 
