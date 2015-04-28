@@ -57,6 +57,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \begin{frame}{} 
+
+\begin{columns}[t]
+
+\begin{column}{.96\linewidth}
+\begin{block}{Abstract}
+
+The EIGER triple-axis thermal neutron spectrometer beamline contains ``supermirror'' neutron guides, which preferentially reflect low-energy neutrons toward the EIGER spectrometer that come from the ambient temperature, light water neutron source in SINQ.  Gold foil measurements have been performed at the EIGER beamline in 2013.  This process can be modeled from incident proton to thermal neutron exiting the EIGER beamline by using the neutron mirror capabilities of MCNPX, which should be more accurate than simulations with simplified neutron source distributions and geometry representations.  The supermirror reflectivity parameters have been measured previously and are used in MCNPX 2.7.0 to reproduce the activity measured from the gold foil irradiation, verifying the neutron mirror modeling capabilities in MCNPX 2.7.0.
+
+\end{block}
+\end{column}
+\end{columns}
+
+\vspace{2ex}
+
   \begin{columns}[t]
     \begin{column}{.3\linewidth}
 
@@ -65,7 +79,7 @@
       \begin{block}{Introduction}
 
 \begin{columns}
-\begin{column}{.6\linewidth}
+\begin{column}{.5\linewidth}
 \noindent{\hskip1cm\textbf{SINQ}}
 \begin{itemize}
   \item Spallation neutron source
@@ -86,34 +100,49 @@
 
 \noindent{\hskip1cm\textbf{Neutron Guide}} 
   \begin{itemize} 
-  \item Supermirrors reflective to low-energy neutrons
+  \item Supermirrors reflective to low-energy neutrons \cite{mcnpx-ref}
   \item Allow the guide to transport neutrons with small divergence
-  \item Reflectivity parameters of EIGER's supermirrors have been measured
-  \item Sapphire crystal filters $>$0.1 eV \cite{freund}.
+  \item Reflectivity parameters of EIGER's supermirrors have been measured \cite{eiger-uwe}
+  \item Sapphire crystal filter scatters out neutrons $>$0.1 eV \cite{freund}
   \end{itemize}
 \end{column}
 
-\begin{column}{.4\linewidth}
+\begin{column}{.5\linewidth}
 \noindent{\hskip1cm\textbf{Study Goals}} 
   \begin{itemize}
-  \item Verify neutron reflectivity is working in MCNPX 2.7.0
+  \item Verify neutron reflectivity is working in MCNPX 2.7.0 \cite{mcnpx-ref,mcnpx270}
   \item Verify that reflectivity works with MPI parallelism
   \item Compare calculated and measured gold foil activities
   \end{itemize}
+
+  \noindent{\hskip1cm\textbf{EIGER Parameters}}
+        \begin{tabular}{l l l l}
+        $R_0$    & = $0.99            $ & $ Q_c  $  & = $ 2.19 \times 10^{-2} $\\
+        $m  $    & = $2               $ & $\alpha$  & = $ 6.07 $ \\
+        $W  $    & = $3 \times 10^{-3}$ & $      $  &   
+        \end{tabular}
 
     \includegraphics*[width=\linewidth]{reflectivity_curve.pdf}
 
 \end{column}
 \end{columns}
-\vspace{2ex}
-\begin{equation}\label{eq:ref}
+\vspace{-4ex}
+\noindent{\hskip1cm\textbf{Supermirror Reflectivity }}
+\begin{center}
+\begin{equation*}\label{eq:ref}
         R(Q) = 
         \begin{cases}
             Q > Q_c;  \qquad \frac{R_0}{2}\left\{  1 - \tanh\left(  \frac{Q - m Q_c}{W}\right) \right\}\{1-\alpha(Q-Q_c)\} \\
             Q \leq Q_c; \qquad R_0 \\
         \end{cases}
-    \end{equation}
+    \end{equation*}
 
+        \begin{tabular}{l l l l}
+        $R_0$    & = nominal reflectivity & $ Q_c  $  & = critical momentum transfer   \\
+        $m  $    & = angular extension    & $\alpha$  & = reflectivity declination  \\
+        $W  $    & = edge width           &           &   
+        \end{tabular}
+\end{center} 
       \end{block}
 
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,9 +162,10 @@
           \includegraphics*[width=\linewidth]{eiger_lr.png}
           \end{center}
 
+          \noindent{\hskip1cm\textbf{MCNPX Model}} 
           \begin{itemize} 
           \item As high-fidelity as possible
-          \item S($\alpha$,$\beta$) data used, including those for the crystal sapphire \cite{sapp}
+          \item S($\alpha$,$\beta$) data used, including those for the sapphire crystal \cite{sapp}
           \item Water scatterer model created from CAD models using MCAM \cite{mcam}
           \end{itemize}
 
@@ -143,27 +173,6 @@
       \end{columns}
       
       \end{block}
-
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-      \begin{block}{Gold Foil Measurement}
-        \begin{columns}[T]
-          \begin{column}{.65\linewidth}
-          \begin{itemize} 
-          \item Vertical array of six gold foils, 25 mm in diameter, 30 mm center-to-center
-          \item Placed near the monochromator position at EIGER
-          \item Exposed to $200 \mu A$ for 5 minutes in December, 2013
-          \item Activation analysis was performed using a gamma spectrometer after irradiation
-          \end{itemize}
-
-            
-          \end{column}
-          \begin{column}{.35\linewidth}
-            \includegraphics*[angle=90,width=\linewidth]{foils.eps}
-          \end{column}
-        \end{columns}
-      \end{block}
-
 
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -218,27 +227,25 @@
       \end{block}
 
       \begin{block}{Intermediate Results}
-
-     \includegraphics*[width=\linewidth]{dists.pdf}
+      \vspace{-2ex}
+      \begin{center}
+      \noindent{\textbf{Water Scatterer} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textbf{Sapphire Crystal} \hfill }
+      \includegraphics*[width=\linewidth]{dists.pdf}
+      \end{center}
 
       \begin{columns}
 
       \begin{column}{0.5\linewidth}
-
-       
-
+      \vspace{-2ex}
         \includegraphics*[width=\linewidth]{specs_narrow.eps}
-
       \end{column}
-
       \begin{column}{0.5\linewidth}
-
+      \vspace{-2ex}
       \begin{itemize}
-        \item Visual confirmation of ditribution convergence
+        \item Visual confirmation of distribution convergence
         \item The post-sapphire spectrum has a proportionally smaller component above 0.1 eV
         \item The post-sapphire distribution used as the source in subsequent calculations with the neutron guide reflectivity turned on and off. 
         \end{itemize}
-
       \end{column}
 
       \end{columns}
@@ -254,47 +261,85 @@
     
     \begin{column}{.3\linewidth}
 
+      \begin{block}{Gold Foil Measurement}
+        \begin{columns}[T]
+          \begin{column}{.65\linewidth}
+          \begin{itemize} 
+          \item Vertical array of six gold foils, 25 mm in diameter, 30 mm center-to-center
+          \item Placed near the monochromator position at EIGER
+          \item Exposed to $200 \mu A$ for 5 minutes in December, 2013
+          \item Activation analysis was performed using a gamma spectrometer after irradiation
+          \end{itemize}
+
+            
+          \end{column}
+          \begin{column}{.35\linewidth}
+            \includegraphics*[angle=90,width=\linewidth]{foils.eps}
+          \end{column}
+        \end{columns}
+      \end{block}
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
       \begin{block}{Experimental \vs Calculated Results}
 
-      %\begin{columns}
+      \begin{columns}
 
-      %\begin{column}{0.5\linewidth}
-
+      \begin{column}{0.5\linewidth}
+      \vspace{-4ex}
       \begin{center}
-      \includegraphics*[width=0.75\linewidth]{gain.pdf}
+      \noindent{\hskip1cm\textbf{Spectra}}
+      \includegraphics*[width=\linewidth]{gain.pdf}
       \end{center}
-
-      \begin{itemize}
-      \item Surface source sampled repeatedly with different seeds  
-      %\item 256 equi-log bins from $10^{-12}$ to 600 MeV
-      \item Reflectivity $>$1 below 200 meV and increases to 2.5 at 3 meV
-      \item The gold (n,$\gamma$) folded to determine the total reaction rate per incident proton
-      \end{itemize}
-
-      %\end{column}
-
-
-      %\begin{column}{0.5\linewidth}
-
+      \end{column}
+      \begin{column}{0.5\linewidth}
+      \vspace{-4ex}
       \begin{center}
-      \includegraphics*[width=0.75\linewidth]{GF_act.pdf}
+      \noindent{\hskip1cm\textbf{Activities}}
+      \includegraphics*[width=\linewidth]{GF_act.pdf}
       \end{center}
+      \end{column}
 
+      \end{columns}
+
+
+
+
+      \begin{columns}
+
+      \begin{column}{0.5\linewidth}
+
+     
       \begin{itemize}
       \item Peak at center, less than 50\% of ideal
       \item Equal to the non-reflective guide edges
       \item The average value is 20\% if the -7.5 cm value is not considered (potential mass error)
       \end{itemize}
-      
-      %\end{column}
 
-      %\end{columns}
+
+      \end{column}
+
+      \begin{column}{0.5\linewidth}
+
+      \begin{itemize}
+      \item Surface source sampled repeatedly with different seeds  
+      \item 256 equi-log bins from $10^{-12}$ to 600 MeV
+      \item Reflectivity $>$1 below 200 meV and increases to 2.5 at 3 meV
+      \item The gold (n,$\gamma$) folded to determine the total reaction rate per incident proton
+      \end{itemize}
+
+
+      \end{column}
+
+      \end{columns}
+      
+      
 
       \end{block}
 
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-      %\vspace{5ex}
+      \vspace{5ex}
 
       \begin{block}{\alert{Conclusions}}
         \begin{itemize}
@@ -304,7 +349,7 @@
         \vspace{-1ex}
       \end{block}
 
-      %\vspace{5ex}
+      \vspace{5ex}
 
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
