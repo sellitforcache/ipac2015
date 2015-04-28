@@ -169,6 +169,10 @@ The EIGER triple-axis thermal neutron spectrometer beamline contains ``supermirr
           \item Water scatterer model created from CAD models using MCAM \cite{mcam}
           \end{itemize}
 
+          \begin{center}
+          \includegraphics*[width=.5\linewidth]{wsgeom_xy.pdf} \quad \includegraphics*[width=.31\linewidth]{wsgeom_yz.pdf} 
+          \end{center}
+
         \end{column}
       \end{columns}
       
@@ -184,7 +188,7 @@ The EIGER triple-axis thermal neutron spectrometer beamline contains ``supermirr
     \begin{column}{.3\linewidth}
 
       \begin{block}{Variance Reduction}
-
+      \vspace{-2ex}
       \begin{center} Approximately $\sim 10^{-6}$ neutrons per proton make it to EIGER. \end{center}
 
       \begin{columns}
@@ -192,7 +196,7 @@ The EIGER triple-axis thermal neutron spectrometer beamline contains ``supermirr
       \begin{column}{0.5\linewidth}
 
       \begin{center}
-      \includegraphics*[width=\linewidth]{wwg.pdf}
+      \includegraphics*[width=.15\linewidth]{wwg_key.pdf} \includegraphics*[width=.85\linewidth]{wwg.pdf}
 
       \includegraphics*[width=\linewidth]{wwg_mesh.pdf}
       \end{center}
@@ -227,9 +231,9 @@ The EIGER triple-axis thermal neutron spectrometer beamline contains ``supermirr
       \end{block}
 
       \begin{block}{Intermediate Results}
-      \vspace{-2ex}
+      %\vspace{-2ex}
+      \noindent{\qquad \qquad \textbf{Water Scatterer} {\tiny (Black = Guide view, Pink = Nozzle view)} \qquad \qquad  \textbf{Sapphire Crystal}  }
       \begin{center}
-      \noindent{\textbf{Water Scatterer} \qquad \qquad \qquad \qquad \qquad \qquad \qquad \textbf{Sapphire Crystal} \hfill }
       \includegraphics*[width=\linewidth]{dists.pdf}
       \end{center}
 
@@ -312,8 +316,8 @@ The EIGER triple-axis thermal neutron spectrometer beamline contains ``supermirr
       \begin{itemize}
       \item Surface source sampled repeatedly with different seeds  
       \item 256 equi-log bins from $10^{-12}$ to 600 MeV
-      \item Reflectivity \alert{$>$1} below 200 meV 
-      \item Reflectivity increases to \alert{2.5} at 3 meV
+      \item Reflectivity gain \alert{$>$1} below 200 meV 
+      \item Reflectivity gain increases to \alert{2.5} at 3 meV
       \item The gold (n,$\gamma$) folded to determine the total reaction rate per incident proton
       \end{itemize}
 
@@ -379,12 +383,12 @@ Nuclear Instruments and Methods in Physics Research, vol 213, 1983, pp 495-501.
 \bibitem{sapp}
   F. Cantargi, J.R. Granada, R.E. Mayer, 
   ``Thermal neutron scattering kernels for sapphire and silicon single crystals'', 
-  Annals of Nuclear Energy 80, 2015, pp 43–46.  
+  Annals of Nuclear Energy 80, 2015, pp 43-46.  
 
 \bibitem{mcam}
   Y. Wu, FDS Team, 
   ``CAD-based interface programs for fusion neutron transport simulation'', 
-  Fusion Engineering and Design 84, 2009, 1987–1992. \\
+  Fusion Engineering and Design 84, 2009, 1987-1992. \\
 
 \end{thebibliography}
       \end{block}
