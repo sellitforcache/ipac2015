@@ -15,9 +15,9 @@ plt.rc('font', size=16)
 def refl(q):
 	r0= 0.995
 	qc= 2.17e-2
-	m = 3.6
-	a = 3.99
-	w = 1e-3
+	m = 1.9
+	a = 6.400409626216078
+	w = 4e-3
 	if q <= qc:
 		return r0
 	else:
