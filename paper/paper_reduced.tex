@@ -15,7 +15,7 @@
 
 \title{Simulation Methods and Results of the SINQ Cold Neutron Source Upgrade Study } %\thanks{Supported by Swiss National Science Foundation grant 200021\_150048/1}
 
-\author{R.M. Bergmann, U. Filges, D. Kiselev, C. Klauser, E. Rantsiou, V. Talanov, M. Wohlmuther, M. Yamada} %\thanks{ryan.bergmann@psi.ch}
+\author{R. M. Bergmann, U. Filges, D. Kiselev, C. Klauser, E. Rantsiou, V. Talanov, M. Wohlmuther, M. Yamada} %\thanks{ryan.bergmann@psi.ch}
 
 \address{Paul Scherrer Institut, Villigen, Switzerland}
 
@@ -23,14 +23,14 @@
 
 \begin{abstract}
 
-\noindent Changing the configuration of the cold neutron source during a planned extended shutdown of the Swiss Spallation Neutron Source (SINQ) is being considered for improving performance of instruments at SINQ that use cold neutrons.  The cold neutron source consists of a 20 L volume of liquid D$_2$ at approximately 25 K.  Proposed plans include making the re-entrant hole external, redesigning the re-entrant hole geometry, adding a Pb-208 reflector, replacing the zirconium safety hulls, adding cryogenic beryllium reflector/filters, and incorporating an active ortho-D$_2$ conversion loop.  The optimization methods and the effects of the best-case modifications at all six neutron guides are presented.  The best case design is predicted to yield maximum gain factors of about 1.5 in cold neutron intensity.  
+\noindent Changing the configuration of the cold neutron source during a planned extended shutdown of the Swiss Spallation Neutron Source (SINQ) is being considered for improving performance of instruments at SINQ that use cold neutrons.  The cold neutron source consists of a 20 L volume of liquid D$_2$ at approximately 25 K.  This study includes making the re-entrant hole external, redesigning the re-entrant hole geometry, adding a Pb-208 reflector, replacing the zirconium safety hulls, adding cryogenic beryllium reflector/filters, and incorporating an active ortho-D$_2$ conversion loop.  The optimization methods and the effects of the best-case modifications at all six neutron guides are presented.  The best case design is predicted to yield a maximum gain factor of 1.5 in cold neutron intensity.  
 
 \end{abstract}
 
 
 \section{Introduction}
 
-The Swiss Spallation Neutron Source (SINQ) is a spallation neutron source driven by a continuous 590 MeV proton beam at the Paul Scherrer Institut (PSI) in Villigen, Switzerland.  The incoming protons impinge on a lead target cooled with heavy water, producing high energy neutrons.  These neutrons are moderated by the tank of D$_2$O surrounding the target.  The cold source (CS) is a 20 liter volume of liquid D$_2$ at approximately 25 K located within the D$_2$O moderator tank with its innermost face approximately 35 cm away from the center of the target.  It further reduces the neutrons' energies to a colder spectrum more useful to instruments which view it.  To enhance the number of emitted cold neutrons, a re-entrant hole (REH) has been attempted in the past.  The goal of a REH is to remove scattering and absorbing material between the spot with the maximum cold neutron flux (CS center) and the direction of interest (guide hall).  The REH is presently a five-sided box with the open face at the bottom.  It sits inside the D$_2$ volume directly next to the wall facing the guide hall.  Voiding this kind of REH relies on radiative heating to boil D$_2$ which in turn fills the REH cavity with D$_2$ vapor, pushing the liquid D$_2$ out.  Proposed plans include making the REH external, ensuring that it is not filled with liquid D$_2$.  Calculations done prior to these changes predicted cold neutron fluence gains from 1.2 to 1.9, with gains increasing with wavelength \cite{atch_icans}. These increases have not been observed, and it is suspected that the REH is not fully voided \cite{voided}.  All new designs have an external REH, which will decouple the fill level from radiation heating and ensure that the REH is never filled with liquid D$_2$.  
+The Swiss Spallation Neutron Source (SINQ) is a spallation neutron source driven by a continuous 590 MeV proton beam at the Paul Scherrer Institut (PSI) in Villigen, Switzerland.  The incoming protons impinge on a zircaloy clad lead target cooled with heavy water, producing high energy neutrons.  These neutrons are moderated by the tank of D$_2$O surrounding the target.  The cold source (CS) is a 20 liter volume of liquid D$_2$ at approximately 25 K located within the D$_2$O moderator tank with its innermost face approximately 35 cm away from the center of the target.  It further reduces the neutrons' energies to a colder spectrum more useful to instruments which view it.  To enhance the number of emitted cold neutrons, a re-entrant hole (REH) has been attempted in the past.  The goal of a REH is to remove scattering and absorbing material between the spot with the maximum cold neutron flux (CS center) and the direction of interest (guide hall).  The REH is presently a five-sided box with the open face at the bottom.  It sits inside the D$_2$ volume directly next to the wall facing the guide hall.  Voiding this kind of REH relies on radiation-induced heating to boil D$_2$ which in turn fills the REH cavity with D$_2$ vapor, pushing the liquid D$_2$ out.  Proposed plans include making the REH external, ensuring that it is not filled with liquid D$_2$ (or vapor).  Calculations done prior to these changes predicted cold neutron fluence gains from 1.2 to 1.9, with gains increasing with wavelength \cite{atch_icans}. These increases have not been observed, and it is suspected that the REH is not fully voided \cite{voided}.  All new designs have an external REH, which will decouple the fill level from radiation-induced heating and ensure that the REH is never filled with liquid D$_2$.  
 
 Neutrons are transported from the CS to the instruments via neutron guides, which are internally coated with neutron supermirrors reflective to neutrons at low energies and low incident angles.  In the optimized model used for this study, an approximation was used to model the angle-integrated flux exiting 6 meters of guide, the method for which has been published and presented previously in \cite{ecns}.  The method uses a precomputed energy- and angle-dependent transfer functions (using a patched version of MCNP that can model neutron mirror reflections with the McStas reflectivity model \cite{mcnpx-ref}) which correlates the angle and energy of an incoming neutron with one that exits the guide.  These transfer functions are multiplied with the angular neutron flux at the entry of the guide and summed over angle to give a good approximation of the exiting neutron flux for rectangular guides.    
 
@@ -48,7 +48,7 @@ Simulations for the optimization study were done using the Monte Carlo N-Particl
 \caption{\label{geom}A horizontal slice through the MCNP simulation geometry highlighting the relevant components of the target, moderators, and guides present in the MCNP model.}
 \end{figure}
 
-A CAD model of the neutron guide bundles was converted to MCNP geometry by the Monte Carlo Modeling Interface Program (MCAM) package and integrated into the model \cite{mcam}.  The target is made of lead rods with zircaloy cladding and is cooled by D$_2$O, the moderator tank is filled with D$_2$O, the CS is liquid D$_2$, the nozzles are filled with a low-pressure helium mixture, and the shielding and neutron guide structure is steel.  All structural material in the moderator tank is an aluminum alloy (AlMg-3), which is shown in yellow in Figure \ref{geom}.  The cross sections used in the simulations were from the ENDF/B-VII.1 library.  Thermal scattering S($\alpha$,$\beta$) tables (continuous-energy when possible) were used for both moderators and structural materials within the moderator tank \cite{sab, ike}.
+A CAD model of the neutron guide bundles was converted to MCNP geometry by the Monte Carlo Modeling Interface Program (MCAM) package and integrated into the model \cite{mcam}.  The target is zircaloy clad lead rods cooled by D$_2$O, the moderator tank is filled with D$_2$O, the CS is liquid D$_2$, the nozzles are filled with a low-pressure helium mixture, and the shielding and neutron guide structure is steel.  All structural material in the D$_2$O moderator tank is an aluminum alloy (AlMg-3), which is shown in yellow in Figure \ref{geom}.  The cross sections used in the simulations were from the ENDF/B-VII.1 library.  Thermal scattering S($\alpha$,$\beta$) tables (continuous-energy when possible) were used for both moderators and structural materials within the moderator tank \cite{sab, ike}.
 
 \section{Variance Reduction and Acceleration}
 
@@ -56,10 +56,10 @@ Three variance reduction or acceleration methods were used to perform the simula
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics*[width=.10\linewidth]{geom/ww_filled_xy_large_key.pdf} 
-\includegraphics*[width=.20\linewidth,trim={2cm 2cm 3cm 3cm},clip]{geom/ww_filled_xy_large.pdf} 
-\includegraphics*[width=.18\linewidth]{geom/dxt_guide_entrance.pdf}
-\includegraphics*[width=.18\linewidth]{geom/imp0.pdf}
+\includegraphics*[width=.13\linewidth]{geom/ww_filled_xy_large_key.pdf} 
+\includegraphics*[width=.27\linewidth,trim={2cm 2cm 3cm 3cm},clip]{geom/ww_filled_xy_large.pdf} 
+\includegraphics*[width=.23\linewidth]{geom/dxt_guide_entrance.pdf}
+\includegraphics*[width=.23\linewidth]{geom/imp0.pdf}
 \end{center}
 \caption{\label{var_red} [LEFT] The weight window lower bounds, [CENTER] the Aare-side guide bundle with a DXTRAN sphere, and [RIGHT] the geometry near the corner of the REH.}
 \end{figure}
@@ -80,29 +80,29 @@ If only flat surfaces are considered, the REH geometry can be described by nine 
 \quad
 \includegraphics*[width=0.15\linewidth,trim={5cm 3cm 5cm 5cm},clip]{geom/genetic_xy.pdf} 
 \includegraphics*[width=0.15\linewidth,trim={5cm 4.5cm 5cm 4.5cm},clip]{geom/genetic_xz.pdf} 
-\caption{\label{geom_cases} [LEFT] The current REH geometry. [CENTER] The best case REH geometry from the parametric scan. [RIGHT] The best case REH geometry from the genetic optimization.  In all cases, the horizontal geometry is shown in the upper plot and the vertical geometry is shown in the lower plot.}
+\caption{\label{geom_cases} [LEFT] The current REH geometry. [CENTER] The best case REH geometry from the parametric scan. [RIGHT] The best case REH geometry from the genetic optimization.  In all cases, the horizontal geometry is shown to the left and the vertical geometry to the right.}
 \end{center}
 \end{figure}
 
-The leftmost case in Figure \ref{geom_cases} shows the present REH design, and is called the ``original'' case in subsequent plots.  The first new design results, from here on called the ``scan REH'' case (center case in Figure \ref{geom_cases}), was determined by taking the best performing combination of a parametric scan of the REH geometry. Two scans were done; one in the horizontal plane and one in the verical plane. In both scans, the geometry was kept symmetric about the centerline.  The rightmost case in Figure \ref{geom_cases} shows the best case as determined using the DEAP genetic optimization framework \cite{deap}, which from here on called the ``genetic REH'' case.  Since the FOM in all the optimization studies was chosen to be the total current exiting the AMOR/SANS-I guide six meters from the CS surface from 3 to 6 \AA{} -- the wavelength band which is useful for most of the instruments in the guide hall \cite{instruments_wavelength}. %-- and all the REH planes were allowed to change, the final result was an asymmetric REH directed towards the AMOR/SANS-I guide.  It was decided to optimize on the AMOR/SANS-I guide since it has the best angle to view the center of the cold source, so it was thought that this guide would receive the largest gains, i.e. produce the highest signal range for the optimization.
+The leftmost case in Figure \ref{geom_cases} shows the present REH design, and is called the ``original'' case subsequently.  The first new design results, from here on called the ``scan REH'' case (center case in Figure \ref{geom_cases}), was determined by taking the best performing combination of a parametric scan of the REH geometry. Two scans were done; one in the horizontal plane and one in the verical plane. In both scans, the geometry was kept symmetric about the centerline.  The rightmost case in Figure \ref{geom_cases} shows the best case as determined using the DEAP genetic optimization framework \cite{deap}, which from here on called the ``genetic REH'' case.  The figure of merit (FOM) in all the optimization studies was chosen to be the total current exiting the AMOR/SANS-I guide six meters from the CS surface from 3 to 6 \AA{} -- the wavelength band which is useful for most of the instruments in the guide hall \cite{instruments_wavelength}. %-- and all the REH planes were allowed to change, the final result was an asymmetric REH directed towards the AMOR/SANS-I guide.  It was decided to optimize on the AMOR/SANS-I guide since it has the best angle to view the center of the cold source, so it was thought that this guide would receive the largest gains, i.e. produce the highest signal range for the optimization.
 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics*[width=\linewidth,trim={0cm 0.4cm 0cm 0.5cm},clip]{geom_spec.pdf}
 \end{center}
-\caption{\label{spec_geom} [LEFT] The calculated spectra exiting the AMOR/SANS-I guide at the 6 m position, and [RIGHT] the gain curves over the filled case for the original, scan, and genetic REH geometries.}
+\caption{\label{spec_geom} [LEFT] The calculated spectra in the AMOR/SANS-I guide at the 6 m position, and [RIGHT] the gain curves for the original, scan, and genetic REH geometries compared the case where the REH is filled with liquid D$_2$.}
 \end{figure}
 
-Figure \ref{spec_geom} shows the calculated spectra exiting the 6 m length of guide leading towards AMOR/SANS-I and the gains over an absent REH (which is the original case, but filled with liquid D$_2$).  It shows that the new designs produce gain curves that are about 60\% higher than that of the orginal design.  The gain curve of the genetic case has a slightly higher peak value (1.42 vs. 1.39) and a slightly higher average value from 3-6 {\AA} (1.32 vs. 1.30), but has lower gains for wavelengths longer than 7 {\AA}.  The effect that the asymmetric genetic REH has on the other guides is discussed in Section \ref{sec:allguides}.
+Figure \ref{spec_geom} shows the calculated spectra exiting the 6 m length of guide leading towards AMOR/SANS-I and the gains over the ``filled'' case (which is the original case, but with the REH filled with liquid D$_2$).  It shows that the new designs produce gain curves that are about 60\% higher than that of the original design.  The gain curve of the genetic case has a slightly higher peak value (1.42 vs. 1.39) and a slightly higher average value from 3-6 {\AA} (1.32 vs. 1.30), but has lower gains for wavelengths longer than 7 {\AA}.  The effect that the asymmetric genetic REH has on the other guides is discussed in Section \ref{sec:allguides}.
 
 \section{New Materials}
 
-Other than changing the geometry of the REH, changing some key materials was also studied.  Many options were considered, but many were either unfeasible do to the strong radiation field or produced very negative results.  In all cases, the scan REH as present since a similar geometry will almost certainly be present.  The short list of cases considered were: 1) Adding cryogenic Be windows at the REH \cite{Be} to reflect small wavelength neutrons back into the moderator while allowing long wavelength neutrons to exit freely; 2) Adding a Pb-208 reflector \cite{Pb208}, which has very low neutron absorption, to the back side of the CS in order to reduce upscattering on the surrounding warm D$_2$O;  3) Making the moderator be 100\% o-D$_2$ in order to increase the macroscopic cross section; 4) Replacing the Zr safety hull with AlMg3, which has a lower total macroscopic cross section.
+Other than changing the geometry of the REH, changing some key materials was also studied.  Many options were considered, but many were either unfeasible in the strong radiation field or produced very negative results.  In all cases where materials new were studied, the scan REH was included in the model since a similar geometry will almost certainly be present in the upgrade.  The short list of cases considered were: 1) Adding cryogenic Be windows at the REH \cite{Be} to reflect small wavelength neutrons back into the moderator while allowing long wavelength neutrons to exit freely; 2) Adding a Pb-208 reflector \cite{Pb208}, which has very low neutron absorption, to the back side of the CS in order to reduce upscattering on the surrounding warm D$_2$O;  3) Making the moderator be 100\% o-D$_2$ in order to increase the macroscopic cross section; 4) Replacing the Zr safety hull with AlMg3, which has a lower total macroscopic cross section.
 
 \begin{figure}[h!]
 \begin{center}
   \includegraphics*[width=\linewidth,trim={0cm 0.4cm 0cm 0.5cm},clip]{all_mat_mods.pdf}
-\caption{\label{spec_material}[LEFT] The calculated spectra exiting the AMOR/SANS-I guide at the 6 m position, and [RIGHT] the gain curves over the filled case from material modifications.}
+\caption{\label{spec_material}[LEFT] The calculated neutron spectra in the AMOR/SANS-I guide at the 6 m position, and [RIGHT] the gain curves over the filled case from material modifications.}
 \end{center}
 \end{figure}
 
@@ -118,7 +118,7 @@ The optimization was based on the response of the AMOR/SANS-I guide, but the eff
 \begin{floatrow}
 \ffigbox
   {\includegraphics*[width=0.95\linewidth]{best_cases_RITA.pdf}}
-  {\caption{ [TOP] The calculated spectra exiting the RITA-II guide at the 6 m position, and [BOTTOM] the gain curves over the filled case for the original, scan, and genetic REH geometries.}\label{spec_rita}}
+  {\caption{ [TOP] The calculated neutron spectra in the RITA-II guide at the 6 m position, and [BOTTOM] the gain curves over the filled case for the original, scan, and genetic REH geometries.}\label{spec_rita}}
 \killfloatstyle
 \ttabbox
   {\begin{tabular}{| l | r | r | r |}
@@ -150,11 +150,11 @@ The optimization was based on the response of the AMOR/SANS-I guide, but the eff
  \hline
 \end{tabular}
   }
-  {\caption{{\bf Peak gains} and average gains from 3-6 {\AA} due to the proposed CS upgrades at the 6 m position for each of the six guides.  The top row are the guides on the Aare side, and the bottom row are the guides on the Berg side.}\label{tab:allguides}}
+  {\caption{{\bf Peak gains} (bold) and average gains from 3-6 {\AA} due to the proposed CS upgrades at the 6 m position for each of the six guides.  The top row are the guides on the Aare side, and the bottom row are the guides on the Berg side.}\label{tab:allguides}}
 \end{floatrow}
 \end{figure}
 
-When compared to the symmetric, scan-optimized REH, it can be seen that the asymmetric, genetically-optimized REH gives about a 2\% benefit to guides on the Aare side and either has neutral or a small negative effect on the Berg side.  The scan-optimized REH is more uniform across all guides.  Figure \ref{spec_rita} only shows the RITA-II guide since it has the biggest negative effect from the genetic REH.  All the other cases have similar shapes and Table \ref{tab:allguides} gives the magnitude of the differences.  Separate simulations were run for each case (DXTRAN centered around the Aare or Berg bundle) in order to keep the DXTRAN sphere small and therefore the underlying tallies efficiently sampled.  
+When compared to the symmetric, scan-optimized REH, it can be seen that the asymmetric, genetically-optimized REH gives about a 2\% benefit to guides on the Aare side and either has neutral or a small negative effect on the Berg side.  The scan-optimized REH is more uniform across all guides.  Figure \ref{spec_rita} only shows the RITA-II guide since it has the biggest negative effect from the genetic REH.  All the other neutron guide cases have similar shapes and Table \ref{tab:allguides} gives the magnitude of the differences.  Separate simulations were run for each case (DXTRAN centered around the Aare or Berg bundle) in order to keep the DXTRAN sphere small and therefore the underlying tallies efficiently sampled.  
 
 %\section{Effect at ICON}
 %
